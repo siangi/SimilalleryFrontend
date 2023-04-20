@@ -27,10 +27,11 @@ body{
 }
 
 .grid-item-container{
-  width: 10vw;
-  height: 10vw;
-  background-color: cornflowerblue;
-  border: 1px solid black
+  width: fit-content;
+}
+
+.hidden{
+  display:none
 }
 
 .grid-sizer{

@@ -8,7 +8,7 @@ function App() {
   const [similarImages, setSimilarImages] = useState([])
   useEffect(() => {
     const loader = new ImageLoader()
-    loader.loadImagesFromLocalAPI(1001, setSimilarImages)
+    loader.loadImagesFromLocalAPI(Math.floor(Math.random()*20000), setSimilarImages)
   }, [])
   
   return (

@@ -33,7 +33,7 @@ export default function MasonryGallery() {
 
         {imageContext.images.map((image) => 
           <DraggableItem key={image.id}>
-            <GalleryItem imgLink={image.url} onimgLoad={resizeOnImgLoad} isImgMain={image.isMain}></GalleryItem>
+            <GalleryItem imgLink={image.url} onimgLoad={resizeOnImgLoad} onNextImages={(event) => imageContext.findSimilarImages(image.id)} isImgMain={image.isMain}></GalleryItem>
           </DraggableItem>
         )}
     </DraggableGrid>

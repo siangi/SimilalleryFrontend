@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 type Props = {
     onimgLoad: () => void
+    onNextImages: (event: any) => void
     imgLink: string
     isImgMain: boolean
 }
@@ -24,6 +25,6 @@ export default function GalleryItem(props: Props) {
   }
 
   return (
-    <img className='grid-item hidden' ref={imageRef} src={props.imgLink} onLoad={setCalculatedWidth}></img>
+    <img className='grid-item hidden' ref={imageRef} src={props.imgLink} onClick={props.onNextImages} onLoad={setCalculatedWidth}></img>
   )
 }

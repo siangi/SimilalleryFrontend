@@ -1,21 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './App.css';
 import MasonryGallery from './Components/Gallery/MasonryGallery';
-import GalleryImage from './Models/GalleryImage';
-import ImageLoader from './Models/ImageLoader';
+import ImageProvider from './Contexts/imageContext';
+
+
 
 function App() {
-  const [similarImages, setSimilarImages] = useState([])
-  useEffect(() => {
-    const loader = new ImageLoader()
-    loader.loadImagesFromLocalAPI(Math.floor(Math.random()*20000), setSimilarImages)
-  }, [])
-  
   return (
     <div className="App">
-      <header className="App-header">
-        <MasonryGallery images={similarImages}></MasonryGallery>
-      </header>
+      <ImageProvider>
+        <header className="App-header">
+          <MasonryGallery></MasonryGallery>
+        </header>
+      </ImageProvider>
     </div>
   );
 }

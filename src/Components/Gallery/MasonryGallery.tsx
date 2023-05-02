@@ -1,14 +1,19 @@
-import React, { ChangeEvent, useRef } from 'react'
+import React from 'react'
 import DraggableGrid, { DraggableItem} from 'ruuri'
 import GalleryItem from './GalleryItem'
-import GalleryImage from '../../Models/GalleryImage'
+import { ImageContextType } from '../../@types/image'
+import { ImageContext } from '../../Contexts/imageContext'
 
-type Props = {
-  images: GalleryImage[];
-}
 
-export default function MasonryGallery(props: Props) {
-  const gridRef: any = useRef(null)
+export default function MasonryGallery() {
+  const gridRef: any = React.useRef(null)
+  const imageContext = React.useContext(ImageContext) as ImageContextType
+  React.useEffect(() => {
+    if (imageContext.images.length === 0){
+      imageContext.findSimilarImages(Math.floor(Math.random() * 50000))
+    }
+  }, [imageContext])
+  
 
   function resizeOnImgLoad(){
     if (gridRef !== null){
@@ -26,9 +31,9 @@ export default function MasonryGallery(props: Props) {
       }}
       ref={gridRef}>
 
-        {props.images.map((image) => 
+        {imageContext.images.map((image) => 
           <DraggableItem key={image.id}>
-            <GalleryItem imgLink={image.url} onimgLoad={resizeOnImgLoad}></GalleryItem>
+            <GalleryItem imgLink={image.url} onimgLoad={resizeOnImgLoad} isImgMain={image.isMain}></GalleryItem>
           </DraggableItem>
         )}
     </DraggableGrid>

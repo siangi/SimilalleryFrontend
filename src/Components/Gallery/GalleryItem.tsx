@@ -4,6 +4,7 @@ type Props = {
     onNextImages: (event: any) => void
     imgLink: string
     isImgMain: boolean
+    description: string
 }
 
 export default function GalleryItem(props: Props) {
@@ -25,6 +26,6 @@ export default function GalleryItem(props: Props) {
   }
 
   return (
-    <img className='grid-item hidden' ref={imageRef} src={props.imgLink} onClick={props.onNextImages} onLoad={setCalculatedWidth}></img>
+    <img className='grid-item hidden' alt={props.description} ref={imageRef} src={props.imgLink} onClick={props.onNextImages} onLoad={setCalculatedWidth}></img>
   )
 }

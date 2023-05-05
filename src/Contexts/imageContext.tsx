@@ -20,6 +20,8 @@ const ImageProvider = ({ children }: Props) => {
         { id: 3, title: "Saliency Centrepoint", description: "", internalName: "saliencycenter", active: false },
         { id: 4, title: "Saliency Bounding Rectangle", description: "", internalName: "saliencyrect", active: true }
     ])
+    const AMOUNT_RANGE = [4, 30]
+    const [imgAmount, setImgAmount] = useState<number>(16)
     const [images, setimages] = useState<IGalleryImage[]>([]);
 
     const toggleCriteria = (id: number) => {
@@ -41,10 +43,10 @@ const ImageProvider = ({ children }: Props) => {
                 activeCriteriaIDs.push(element.id)
             }
         });
-        loader.loadImagesFromLocalAPI(id, activeCriteriaIDs, setimages);
+        loader.loadImagesFromLocalAPI(id, activeCriteriaIDs, imgAmount, setimages);
     }
 
-    return <ImageContext.Provider value={{ images, similarityCriterias, findSimilarImages, toggleCriteria }}>
+    return <ImageContext.Provider value={{ images, similarityCriterias, AMOUNT_RANGE, imgAmount, setImgAmount, findSimilarImages, toggleCriteria }}>
         {children}
     </ImageContext.Provider>
 }

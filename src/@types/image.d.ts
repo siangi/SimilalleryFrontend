@@ -9,6 +9,9 @@ export type SimilarityCriteria = {
 export type ImageContextType = {
     similarityCriterias: SimilarityCriteria[];
     images: GalleryImage[];
+    AMOUNT_RANGE: number[];
+    imgAmount: number;
+    setImgAmount: React.Dispatch<React.SetStateAction<number>>;
     findSimilarImages: (id: number) => void;
     toggleCriteria: (id: number) => void;
 }

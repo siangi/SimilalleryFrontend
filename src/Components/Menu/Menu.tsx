@@ -5,6 +5,7 @@ import { ImageContext } from '../../Contexts/imageContext'
 import { ImageContextType } from '../../@types/image'
 import AmountSlider from './AmountSlider'
 import IconKnob from '../Controls/IconKnob'
+import PrimaryButton from '../Controls/PrimaryButton'
 
 type Props = {
     closeAction: MouseEventHandler
@@ -14,6 +15,9 @@ export default function Menu(props: Props) {
     const imageContext = React.useContext(ImageContext) as ImageContextType
     return (
         <ul id="searchoption-container">
+            <li key={Math.random()}>
+                <PrimaryButton text='random search' onClick={(event) => imageContext.findSimilarsRandom()}></PrimaryButton>
+            </li>
             <li key={Math.random()}>
                 <AmountSlider
                     name="img-amount"

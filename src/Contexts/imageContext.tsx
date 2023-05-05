@@ -45,7 +45,12 @@ const ImageProvider = ({ children }: Props) => {
         loader.loadImagesFromLocalAPI(id, activeCriteriaIDs, imgAmount, setimages);
     }
 
-    return <ImageContext.Provider value={{ images, similarityCriterias, AMOUNT_RANGE, imgAmount, setImgAmount, findSimilarImages, toggleCriteria }}>
+    const findSimilarsRandom = () => {
+        // make API function for this.
+        findSimilarImages(Math.ceil(Math.random() * 55000))
+    }
+
+    return <ImageContext.Provider value={{ images, similarityCriterias, AMOUNT_RANGE, imgAmount, setImgAmount, findSimilarImages, findSimilarsRandom, toggleCriteria }}>
         {children}
     </ImageContext.Provider>
 }

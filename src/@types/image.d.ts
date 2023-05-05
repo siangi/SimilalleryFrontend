@@ -13,6 +13,7 @@ export type ImageContextType = {
     imgAmount: number;
     setImgAmount: React.Dispatch<React.SetStateAction<number>>;
     findSimilarImages: (id: number) => void;
+    findSimilarsRandom: () => void
     toggleCriteria: (id: number) => void;
 }
 

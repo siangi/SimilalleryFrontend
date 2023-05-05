@@ -32,7 +32,6 @@ const ImageProvider = ({ children }: Props) => {
 
             return criteria
         }))
-        console.log(similarityCriterias)
     }
 
     const findSimilarImages = (id: number) => {

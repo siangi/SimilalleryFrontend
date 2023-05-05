@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
+import { FaTimes } from 'react-icons/fa'
 import SearchOption from './SearchOption'
 import { ImageContext } from '../../Contexts/imageContext'
 import { ImageContextType } from '../../@types/image'
 import AmountSlider from './AmountSlider'
+import IconKnob from '../Controls/IconKnob'
 
-type Props = {}
+type Props = {
+    closeAction: MouseEventHandler
+}
 
 export default function Menu(props: Props) {
     const imageContext = React.useContext(ImageContext) as ImageContextType
@@ -32,6 +36,9 @@ export default function Menu(props: Props) {
                     </li>
                 ))
             }
+            <li>
+                <IconKnob icon={<FaTimes />} onClick={props.closeAction}></IconKnob>
+            </li>
         </ul>
     )
 }

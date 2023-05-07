@@ -55,3 +55,10 @@ body{
   list-style: none;
 }
 
+.quick-controls{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 0.5rem;
+}
+

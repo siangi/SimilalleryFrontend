@@ -3,7 +3,7 @@ img{
 }
 
 body{
-  padding: 2rem;
+  padding: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,5 +45,36 @@ body{
 
 .hidden{
   display:none
+}
+
+#lightbox{
+  padding: 1.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(54,52,52,0.75);
+
+  display: grid;
+  grid-template-columns: 75% 25%;
+  grid-template-columns: 75% 25%;
+}
+
+.lightbox-image{
+  object-fit: contain;
+}
+
+.lightbox-image-wide{
+  grid-area: 1 / 1 / 1 / 3;
+  height: 100%;
+  width: 100%;
+}
+
+.lightbox-image-tall{
+  grid-area: 1 / 1 / 2 / 1;
+  height: 100%;
+  width: 100%;
 }
 

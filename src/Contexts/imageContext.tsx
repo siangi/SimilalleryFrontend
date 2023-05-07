@@ -10,7 +10,6 @@ type Props = {
 
 export const ImageContext = React.createContext<ImageContextType | null>(null);
 
-
 const ImageProvider = ({ children }: Props) => {
     const [images, setimages] = useState<IGalleryImage[]>([]);
     const findSimilarImages = (id: number) => {

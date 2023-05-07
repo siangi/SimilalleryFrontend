@@ -29,19 +29,21 @@ export default function MasonryGallery() {
     <DraggableGrid
       containerClass='grid'
       dragEnabled={false}
-      itemClass='grid-item-container'
+      itemClass='gallery-item-container'
       layout={{
         fillGaps: false
       }}
       ref={gridRef}>
-        {
-          imageContext.images.map((image) => {
-            return (
-              <DraggableItem key={image.id}>
-                <GalleryItem imgLink={image.url} onimgLoad={resizeOnImgLoad} onNextImages={(event) => imageContext.findSimilarImages(image.id)} isImgMain={image.isMain}></GalleryItem>
-              </DraggableItem>)
-          })
-        }
+
+      {
+        imageContext.images.map((image) => {
+          return (
+            <DraggableItem key={image.id}>
+              <GalleryItem imgID={image.id} imgLink={image.url} description={image.title} onimgLoad={resizeOnImgLoad} onNextImages={(event) => imageContext.findSimilarImages(image.id)} isImgMain={image.isMain}></GalleryItem>
+            </DraggableItem>)
+        })
+      }
+
     </DraggableGrid>
   )
 }

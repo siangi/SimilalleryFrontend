@@ -1,6 +1,15 @@
+import GalleryImage from "../Models/GalleryImage";
+
 export type ImageContextType = {
     images: GalleryImage[];
     findSimilarImages: (id: number) => void
+}
+
+export type ActionsContextType = {
+    isLightboxOpen: Boolean;
+    focusedImage: GalleryImage | null;
+    openLightbox: (imageToFocus: GalleryImage) => void
+    closeLightbox: () => void
 }
 
 

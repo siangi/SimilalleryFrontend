@@ -1,13 +1,15 @@
 import React, { useContext, useRef } from 'react'
 import { ImageContext } from '../../Contexts/imageContext'
-import { ImageContextType } from '../../@types/image'
+import { ActionsContextType, ImageContextType } from '../../@types/image'
 import GalleryImage from '../../Models/GalleryImage'
 import { useState } from 'react'
+import { ActionsContext } from '../../Contexts/ActionsContext'
 
 type Props = {}
 
 export default function Lightbox({ }: Props) {
     const imageContext = useContext(ImageContext) as ImageContextType
+    const actionsContext = useContext(ActionsContext) as ActionsContextType
     const imageRef: any = useRef(null)
     
     function onImageLoaded(){
@@ -24,7 +26,7 @@ export default function Lightbox({ }: Props) {
     }
 
     return (
-        <div id="lightbox">
+        <div id="lightbox" onClick={actionsContext.closeLightbox}>
             {imageContext.images.length > 0? <img className="lightbox-image hidden" src={imageContext.images[0].url} alt={imageContext.images[0].title} onLoad={onImageLoaded} ref={imageRef}/> : null}
         </div>
     )

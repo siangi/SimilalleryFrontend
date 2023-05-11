@@ -25,10 +25,6 @@ export default function MasonryGallery() {
     }
   }
 
-  const IdArray = imageContext.images.map((image) => image.id)
-  IdArray.sort((a, b) => a - b);
-  console.log(IdArray)
-
   return (
     <>
       {actionsContext.isLightboxOpen ? <Lightbox></Lightbox> : null}

@@ -45,8 +45,7 @@ const ImageProvider = ({ children }: Props) => {
     }
 
     const findSimilarsRandom = () => {
-        // make API function for this.
-        findSimilarImages(Math.ceil(Math.random() * 55000))
+        findSimilarImages(-1)
     }
 
     return <ImageContext.Provider value={{ images, similarityCriterias, AMOUNT_RANGE, imgAmount, setImgAmount, findSimilarImages, findSimilarsRandom, toggleCriteria }}>

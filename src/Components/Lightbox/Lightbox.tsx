@@ -27,7 +27,7 @@ export default function Lightbox({ }: Props) {
 
     return (
         <div id="lightbox" onClick={actionsContext.closeLightbox}>
-            {imageContext.images.length > 0? <img className="lightbox-image hidden" src={imageContext.images[0].url} alt={imageContext.images[0].title} onLoad={onImageLoaded} ref={imageRef}/> : null}
+            {actionsContext.focusedImage !==  null? <img className="lightbox-image hidden" src={actionsContext.focusedImage.url} alt={actionsContext.focusedImage.title} onLoad={onImageLoaded} ref={imageRef}/> : null}
         </div>
     )
 }

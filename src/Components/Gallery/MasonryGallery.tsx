@@ -14,7 +14,7 @@ export default function MasonryGallery() {
 
   React.useEffect(() => {
     if (imageContext.images.length === 0) {
-      imageContext.findSimilarImages(Math.floor(Math.random() * 50000))
+      imageContext.findSimilarsRandom();
     }
   }, [])
 

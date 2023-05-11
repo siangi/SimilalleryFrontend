@@ -1,10 +1,5 @@
 import GalleryImage from "../Models/GalleryImage";
 
-export type ImageContextType = {
-    images: GalleryImage[];
-    findSimilarImages: (id: number) => void
-}
-
 export type ActionsContextType = {
     isLightboxOpen: Boolean;
     focusedImage: GalleryImage | null;
@@ -12,6 +7,24 @@ export type ActionsContextType = {
     closeLightbox: () => void
 }
 
+export type SimilarityCriteria = {
+    id: int;
+    internalName: string;
+    title: string;
+    description: string;
+    active: boolean;
+}
+
+export type ImageContextType = {
+    similarityCriterias: SimilarityCriteria[];
+    images: GalleryImage[];
+    AMOUNT_RANGE: number[];
+    imgAmount: number;
+    setImgAmount: React.Dispatch<React.SetStateAction<number>>;
+    findSimilarImages: (id: number) => void;
+    findSimilarsRandom: () => void
+    toggleCriteria: (id: number) => void;
+}
 
 export interface IGalleryImage {
     id: number;

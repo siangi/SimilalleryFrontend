@@ -31,6 +31,8 @@
 
 .gallery-item-button {
     display: grid;
+    background-color: var(--accent-color);
+    color: white;
     grid-area: 2 / 1 / 2 / 1;
 }
 

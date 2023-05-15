@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import './App.css';
+import './css/App.css';
 import MasonryGallery from './Components/Gallery/MasonryGallery';
 import ActionsProvider from './Contexts/ActionsContext';
 import ImageProvider, { ImageContext } from './Contexts/imageContext';
@@ -11,7 +11,7 @@ import QuickControls from './Components/Menu/QuickControls';
 
 function App() {
   const [isMenuVisible, setIsMenuVisible] = useState<Boolean>(false)
-  
+
   return (
     <div className="App">
       <ImageProvider>

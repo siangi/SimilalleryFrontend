@@ -1,0 +1,39 @@
+.grid {
+    width: 80vw;
+    height: 80vh;
+}
+
+.main-image {
+    box-shadow: 7px 4px 51px -2px rgba(54, 52, 52, 0.75);
+    -webkit-box-shadow: 7px 4px 51px -2px rgba(54, 52, 52, 0.75);
+    -moz-box-shadow: 7px 4px 51px -2px rgba(54, 52, 52, 0.75);
+}
+
+.gallery-item-grid {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    grid-template-rows: 90% 10%;
+    margin: 0.5rem;
+}
+
+.gallery-item-grid .gallery-item-button {
+    visibility: hidden;
+}
+
+.gallery-item-grid:hover .gallery-item-button {
+    visibility: visible;
+}
+
+.gallery-item-img {
+    display: grid;
+    grid-area: 1 / 1 / 3 / 2;
+}
+
+.gallery-item-button {
+    display: grid;
+    grid-area: 2 / 1 / 2 / 1;
+}
+
+.gallery-item-container {
+    width: fit-content;
+}

@@ -8,7 +8,7 @@ type Props = {
 
 export default function IconKnob(props: Props) {
   return (
-    <button className={props.positioningClass} onClick={props.onClick}>
+    <button className={props.positioningClass + " icon-knob"} onClick={props.onClick}>
       {props.icon}
     </button>
   )

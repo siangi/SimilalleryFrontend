@@ -7,6 +7,6 @@ type Props = {
 
 export default function PrimaryButton(props: Props) {
     return (
-        <button onClick={props.onClick}>{props.text}</button>
+        <button className="primary-button" onClick={props.onClick}>{props.text}</button>
     )
 }

@@ -14,6 +14,8 @@ button {
 
 .primary-button {
     border: 0.15rem solid var(--accent-color);
+    height: fit-content;
+    width: fit-content;
 }
 
 .icon-knob {

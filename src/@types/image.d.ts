@@ -13,6 +13,7 @@ export type SimilarityCriteria = {
     title: string;
     description: string;
     active: boolean;
+    explainerImgPath: string
 }
 
 export type ImageContextType = {

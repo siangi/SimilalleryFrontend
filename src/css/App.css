@@ -4,17 +4,36 @@
 @import "../Components/Gallery/Gallery.css";
 @import "../Components/Menu/Menu.css";
 
-img {
-  width: 100%;
+body {
+  margin: 0;
+  padding: 0;
 }
 
-body {
+h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--accent-color);
+}
+
+.App {
   padding: var(--base-padding);
   margin: 0;
-
   font-family: var(--base-font);
+  box-sizing: border-box;
 }
 
 .hidden {
   display: none
+}
+
+.overlay {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  background-color: var(--overlay-background);
+  padding: var(--base-padding);
 }

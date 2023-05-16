@@ -1,16 +1,9 @@
 #lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    height: 100vh;
-    width: 100vw;
-    background-color: var(--overlay-background);
-    padding: var(--base-padding);
     display: grid;
     grid-template-columns: calc(75vw - 1.5rem) calc(25vw - 1.5rem);
     grid-template-rows: calc(75vh - 1.5rem) calc(25vh - 1.5rem);
 }
+
 
 .lightbox-image {
     object-fit: contain;

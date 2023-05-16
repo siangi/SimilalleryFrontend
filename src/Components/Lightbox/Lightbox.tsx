@@ -18,10 +18,10 @@ export default function Lightbox({ }: Props) {
     }
 
     return (
-        <div id="lightbox" onClick={actionsContext.closeLightbox}>
+        <div id="lightbox" className='overlay' onClick={actionsContext.closeLightbox}>
             {actionsContext.focusedImage !== null ?
                 (<>
-                    <img className={`lightbox-image ${isImageWide? "lightbox-image-wide": "lightbox-image-tall"}`} src={actionsContext.focusedImage.url} alt={actionsContext.focusedImage.title} onLoad={onImageLoaded} ref={imageRef} />
+                    <img className={`lightbox-image ${isImageWide ? "lightbox-image-wide" : "lightbox-image-tall"}`} src={actionsContext.focusedImage.url} alt={actionsContext.focusedImage.title} onLoad={onImageLoaded} ref={imageRef} />
                     <LightboxInfo imageTitle={actionsContext.focusedImage?.title} artist={actionsContext.focusedImage.artist} category={actionsContext.focusedImage.category}></LightboxInfo>
                 </>) : null}
         </div>

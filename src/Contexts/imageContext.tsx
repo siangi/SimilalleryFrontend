@@ -25,6 +25,7 @@ const ImageProvider = ({ children }: Props) => {
     const toggleCriteria = (id: number) => {
         setSimilarityCriterias(similarityCriterias.map((criteria) => {
             if (criteria.id === id) {
+                // one criteria always has to be selected
                 if (!(criteria.active && similarityCriterias.filter((val) => val.active).length <= 1)) {
                     criteria.active = !criteria.active;
                 }

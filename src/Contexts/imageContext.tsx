@@ -25,7 +25,10 @@ const ImageProvider = ({ children }: Props) => {
     const toggleCriteria = (id: number) => {
         setSimilarityCriterias(similarityCriterias.map((criteria) => {
             if (criteria.id === id) {
-                criteria.active = !criteria.active;
+                if (!(criteria.active && similarityCriterias.filter((val) => val.active).length <= 1)) {
+                    criteria.active = !criteria.active;
+                }
+
             }
 
             return criteria

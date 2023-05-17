@@ -17,7 +17,7 @@ export default function QuickControls(props: Props) {
     const imageContext = useContext(ImageContext) as ImageContextType
     return (
         <div className='small-menu'>
-            <h3 id="current-options">showing images with similar: {similarityCriteriasReducer()}</h3>
+            <h3 id="current-options">Showing images with similar: {similarityCriteriasReducer()}</h3>
             <div className='quick-controls'>
                 <IconKnob icon={<FaCog />} onClick={(event: React.MouseEvent) => props.toggleMenu(true)}></IconKnob>
                 <PrimaryButton text='random search' onClick={(event) => imageContext.findSimilarsRandom()}></PrimaryButton>

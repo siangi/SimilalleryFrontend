@@ -18,7 +18,7 @@ export default function Menu(props: Props) {
             <nav>
                 <h1>Similallery</h1>
                 <div>
-                    <PrimaryButton onClick={() => { }} text='About'></PrimaryButton>
+                    {/* <PrimaryButton onClick={() => { }} text='About'></PrimaryButton> */}
                     <IconKnob icon={<FaTimes />} onClick={props.closeAction}></IconKnob>
                 </div>
             </nav>

@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: row;
     justify-content: end;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 ul {
@@ -27,7 +28,6 @@ ul {
     grid-template-rows: 90% 10%;
     height: 30vh;
     width: 100%;
-    font-size: 1.2rem;
 }
 
 .option-card>img {

@@ -7,8 +7,9 @@
 
 .lightbox-image {
     object-fit: contain;
-    max-height: 100%;
-    max-width: 100%;
+    object-position: center center;
+    height: 100%;
+    width: 100%;
 }
 
 .lightbox-image-wide {

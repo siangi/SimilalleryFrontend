@@ -7,13 +7,13 @@ button {
     background: transparent;
     color: var(--accent-color);
     font-family: var(--base-font);
+    font-size: var(--control-text-size);
     font-weight: 600;
-    font-size: 1.2rem;
     padding: 0.3rem;
 }
 
 .primary-button {
-    border: 0.15rem solid var(--accent-color);
+    border: 0.25rem solid var(--accent-color);
     height: fit-content;
     width: fit-content;
 }
@@ -22,8 +22,19 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: fit-content;
+    width: fit-content;
 }
 
-input {
+.icon-knob svg {
+    font-size: var(--control-text-size);
+    height: var(--control-text-size);
+    width: var(--control-text-size);
+}
+
+input,
+label {
     accent-color: var(--accent-color);
+    font-size: var(--control-text-size);
+
 }

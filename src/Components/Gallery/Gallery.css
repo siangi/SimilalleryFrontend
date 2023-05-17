@@ -1,5 +1,6 @@
 .grid {
-    width: 80vw;
+    box-sizing: border-box;
+    width: 95vw;
     height: 80vh;
 }
 
@@ -11,8 +12,8 @@
 
 .gallery-item-grid {
     display: grid;
-    grid-template-columns: 10% 90%;
-    grid-template-rows: 90% 10%;
+    grid-template-columns: 20% 90%;
+    grid-template-rows: 90% 20%;
     margin: 0.5rem;
 }
 
@@ -34,6 +35,7 @@
     background-color: var(--accent-color);
     color: white;
     grid-area: 2 / 1 / 2 / 1;
+    cursor: zoom-in;
 }
 
 .gallery-item-container {

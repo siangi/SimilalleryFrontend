@@ -21,11 +21,10 @@ export default function GalleryItem(props: Props) {
     }
     if (props.imageData.isMain) {
       imgRef.current.style.width = "calc(10vw + 20vw * " + imgRef.current.naturalWidth + "/ 1400)"
-      imgRef.current.classList.toggle("main-image")
+      imgRef.current.classList.toggle("main-image", true)
     } else {
       imgRef.current.style.width = "calc(5vw + 18vw * " + imgRef.current.naturalWidth + "/ 1400)"
     }
-
     gridRef.current.classList.toggle("hidden")
     props.onimgLoad()
   }

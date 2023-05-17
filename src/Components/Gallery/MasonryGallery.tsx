@@ -40,7 +40,9 @@ export default function MasonryGallery() {
         {
           imageContext.images.map((image) => {
             return (
-              <DraggableItem key={image.id}>
+              // isMain has to be included in the key, otherwise it will not recognise that an image has changed to mainImage 
+              // and will not update the component with the proper style
+              <DraggableItem key={image.id.toString() + image.isMain.toString()}>
                 <GalleryItem imageData={image} onimgLoad={resizeOnImgLoad} onNextImages={(event) => imageContext.findSimilarImages(image.id)}></GalleryItem>
               </DraggableItem>)
           })

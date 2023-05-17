@@ -1,3 +1,4 @@
+import { element } from "prop-types";
 import GalleryImage from "./GalleryImage";
 import axios from "axios";
 
@@ -12,10 +13,11 @@ export default class ImageLoader {
     }
 
     mapJsonToObjects(jsonData: any): GalleryImage[] {
-        
         return jsonData.data.message.map((element: any) => {
-            console.log(element)
+
             return new GalleryImage(element.idimage, element.title, element.year, element.URL, element.artist_name, element.category_name, element.isMain)
         })
+
+
     }
 }

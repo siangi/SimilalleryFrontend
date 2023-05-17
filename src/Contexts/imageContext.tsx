@@ -14,9 +14,9 @@ const ImageProvider = ({ children }: Props) => {
     // get this from the API?
     const [similarityCriterias, setSimilarityCriterias] = useState<SimilarityCriteria[]>([
         { id: 0, title: "Color Palette", description: "", internalName: "palette", active: true, explainerImgPath: "/images/Explainers/Palette.png" },
-        { id: 1, title: "Palette Ratios", description: "", internalName: "paletteratios", active: false, explainerImgPath: "/images/Explainers/PalRatio.png" },
+        { id: 1, title: "Color Area Size", description: "", internalName: "paletteratios", active: false, explainerImgPath: "/images/Explainers/PalRatio.png" },
         { id: 2, title: "Edge Orientation", description: "", internalName: "edgeorient", active: false, explainerImgPath: "/images/Explainers/EdgeOrientation.png" },
-        { id: 4, title: "Saliency Bounding Rectangle", description: "", internalName: "saliencyrect", active: true, explainerImgPath: "/images/Explainers/SubjectPosition.png" }
+        { id: 4, title: "Subject Position", description: "", internalName: "saliencyrect", active: true, explainerImgPath: "/images/Explainers/SubjectPosition.png" }
     ])
     const AMOUNT_RANGE = [4, 30]
     const [imgAmount, setImgAmount] = useState<number>(16)

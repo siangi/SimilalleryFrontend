@@ -17,8 +17,8 @@ export default function Menu(props: Props) {
         <div className='menu-container overlay'>
             <nav>
                 <h1>Similallery</h1>
-                <div>
-                    {/* <PrimaryButton onClick={() => { }} text='About'></PrimaryButton> */}
+                <div className='quick-controls'>
+                    <PrimaryButton onClick={() => { }} text='About'></PrimaryButton>
                     <IconKnob icon={<FaTimes />} onClick={props.closeAction}></IconKnob>
                 </div>
             </nav>
@@ -30,7 +30,7 @@ export default function Menu(props: Props) {
                         min={imageContext.AMOUNT_RANGE[0]}
                         max={imageContext.AMOUNT_RANGE[1]}
                         startVal={imageContext.imgAmount}
-                        onChange={(event) => { imageContext.setImgAmount(parseInt(event.currentTarget.value || "0")); console.log(imageContext.imgAmount) }
+                        onChange={(newVal, thumb) => { imageContext.setImgAmount(newVal) }
                         }
                     ></AmountSlider>
                 </div>

@@ -36,5 +36,42 @@ input,
 label {
     accent-color: var(--accent-color);
     font-size: var(--control-text-size);
+}
 
+input[type="checkbox"] {
+    height: calc(var(--control-text-size) - 0.5rem);
+    width: calc(var(--control-text-size) - 0.5rem);
+}
+
+
+.slider {
+    width: 20rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.slider-thumb {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: 2rem;
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: 600;
+    font-size: calc(var(--control-text-size) * 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.slider-track-1 {
+    height: 0.2rem;
+    background-color: grey;
+}
+
+.slider-track-0 {
+    height: 0.2rem;
+    background-color: var(--accent-color);
 }

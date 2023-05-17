@@ -1,4 +1,5 @@
 import React, { FormEventHandler } from 'react'
+import ReactSlider from 'react-slider'
 
 type Props = {
     name: string,
@@ -6,7 +7,7 @@ type Props = {
     min: number,
     max: number,
     startVal: number
-    onChange: FormEventHandler<HTMLInputElement>,
+    onChange: (newVal: number, thumb: any) => void,
 }
 
 export default function AmountSlider(props: Props) {
@@ -14,10 +15,19 @@ export default function AmountSlider(props: Props) {
         <>
             <label htmlFor={props.name}>
                 {props.labeltext}
-                <div className='sliderContainer'>
-                    <input type="range" className="slider" min={props.min} max={props.max} value={props.startVal} onChange={props.onChange} />
-                </div>
             </label>
+            <ReactSlider
+                onChange={props.onChange}
+                className='slider'
+                thumbClassName='slider-thumb'
+                trackClassName='slider-track'
+                min={props.min}
+                max={props.max}
+                defaultValue={props.startVal}
+                renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
+            />
+            {/* <input type="range" className="slider" min={props.min} max={props.max} value={props.startVal} onChange={props.onChange} /> */}
+
         </>
     )
 }

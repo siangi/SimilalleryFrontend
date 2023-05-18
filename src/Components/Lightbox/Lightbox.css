@@ -12,6 +12,18 @@
     width: 100%;
 }
 
+.ambient-back {
+    content: "dope";
+    display: block;
+    z-index: -1;
+    filter: blur(40px);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+}
+
 .lightbox-image-wide {
     grid-area: 1 / 1 / 1 / 3;
 }

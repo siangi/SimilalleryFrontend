@@ -21,10 +21,22 @@ h1 {
   margin: 0;
   font-family: var(--base-font);
   box-sizing: border-box;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .hidden {
   display: none
+}
+
+.ambient-back {
+  z-index: -1;
+  filter: blur(40px);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 45%;
+  height: 105%;
+  width: 105%;
 }
 
 .overlay {

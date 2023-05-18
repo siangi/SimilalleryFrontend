@@ -2,11 +2,17 @@
 
 :root {
     --background-color: white;
-    --overlay-background: rgba(248, 243, 243, 0.75);
+    --overlay-background: rgba(248, 243, 243, 0.95);
     --accent-color: #6B0292;
+    --text-color: black;
     --base-padding: 2rem;
     --base-font: "Space Grotesk", sans-serif;
 
+    /* --background-color: #111115; */
+    /* --accent-color: #FF7A2F; */
+    /* --accent-color: #FFEA2F; */
+    /* --overlay-background: rgba(17, 17, 21, 90%); */
+    /* --text-color: white; */
     --header-text-size: 3.157rem;
     --control-text-size: 1.777rem;
     --subtitle-text-size: 1.777rem;

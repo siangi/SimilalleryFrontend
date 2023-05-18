@@ -20,7 +20,7 @@ export default function GalleryItem(props: Props) {
       return
     }
     if (props.imageData.isMain) {
-      imgRef.current.style.width = "calc(10vw + 20vw * " + imgRef.current.naturalWidth + "/ 1400)"
+      imgRef.current.style.width = "calc(15vw + 17vw * " + imgRef.current.naturalWidth + "/ 1400)"
       imgRef.current.classList.toggle("main-image", true)
     } else {
       imgRef.current.style.width = "calc(5vw + 18vw * " + imgRef.current.naturalWidth + "/ 1400)"

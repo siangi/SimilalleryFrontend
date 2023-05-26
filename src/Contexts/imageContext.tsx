@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { IGalleryImage, ImageContextType, SimilarityCriteria } from "../@types/image";
+import { IGalleryImage, ImageContextType, SimilarityCriteria, GallerySizingRule } from "../@types/image";
 import ImageLoader from "../Models/ImageLoader";
 
 
@@ -18,7 +18,31 @@ const ImageProvider = ({ children }: Props) => {
         { id: 2, title: "Edge Orientation", description: "", internalName: "edgeorient", active: false, explainerImgPath: "/images/Explainers/EdgeOrientation.png" },
         { id: 4, title: "Subject Position", description: "", internalName: "saliencyrect", active: true, explainerImgPath: "/images/Explainers/SubjectPosition.png" }
     ])
-    const AMOUNT_RANGE = [4, 30]
+    const AMOUNT_RANGE = [4, 30];
+    const [currentSizingRuleIdx, setCurrentSizingRuleIdx] = useState(0)
+    const SIZING_RULES: Array<GallerySizingRule> = [
+        {
+            base: "38vw",
+            increase: "20vw",
+            baseMainImg: "20vw",
+            increaseMainImg: "25vw",
+            maxImageCount: 8
+        },
+        {
+            base: "5vw",
+            increase: "18vw",
+            baseMainImg: "15vw",
+            increaseMainImg: "16vw",
+            maxImageCount: 16
+        },
+        {
+            base: "5vw",
+            increase: "12vw",
+            baseMainImg: "10vw",
+            increaseMainImg: "15vw",
+            maxImageCount: 24
+        }
+    ]
     const [imgAmount, setImgAmount] = useState<number>(16)
     const [images, setimages] = useState<IGalleryImage[]>([]);
 
@@ -44,6 +68,9 @@ const ImageProvider = ({ children }: Props) => {
                 activeCriteriaIDs.push(element.id)
             }
         });
+        let provisionalIdx = SIZING_RULES.findIndex((rule) => rule.maxImageCount >= imgAmount)
+        setCurrentSizingRuleIdx(provisionalIdx >= 0 ? provisionalIdx : SIZING_RULES.length - 1)
+        console.log(SIZING_RULES[currentSizingRuleIdx])
         loader.loadImagesFromLocalAPI(id, activeCriteriaIDs, imgAmount, setimages);
     }
 
@@ -51,7 +78,7 @@ const ImageProvider = ({ children }: Props) => {
         findSimilarImages(-1)
     }
 
-    return <ImageContext.Provider value={{ images, similarityCriterias, AMOUNT_RANGE, imgAmount, setImgAmount, findSimilarImages, findSimilarsRandom, toggleCriteria }}>
+    return <ImageContext.Provider value={{ images, similarityCriterias, AMOUNT_RANGE, SIZING_RULES, currentSizingRuleIdx, setCurrentSizingRuleIdx, imgAmount, setImgAmount, findSimilarImages, findSimilarsRandom, toggleCriteria }}>
         {children}
     </ImageContext.Provider>
 }

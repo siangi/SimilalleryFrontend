@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import './css/App.css';
 import MasonryGallery from './Components/Gallery/MasonryGallery';
 import ActionsProvider from './Contexts/ActionsContext';
@@ -11,6 +11,15 @@ import QuickControls from './Components/Menu/QuickControls';
 
 function App() {
   const [isMenuVisible, setIsMenuVisible] = useState<Boolean>(false)
+  const overflowRef: any = useRef(null)
+
+  function checkForOverfow(): Boolean {
+    if (overflowRef !== null) {
+      return overflowRef.current.scrollHeight > overflowRef.current.clientHeight
+    } else {
+      return false
+    }
+  }
 
   return (
     <div className="App">
@@ -18,7 +27,10 @@ function App() {
         <ActionsProvider>
           {isMenuVisible ? <Menu closeAction={(event) => setIsMenuVisible(false)}></Menu>
             : (<QuickControls toggleMenu={setIsMenuVisible}></QuickControls>)}
-          <MasonryGallery></MasonryGallery>
+
+          <div className="overflow-checker" ref={overflowRef}>
+            <MasonryGallery overflowChecker={checkForOverfow}></MasonryGallery>
+          </div>
         </ActionsProvider>
       </ImageProvider>
     </div>

@@ -20,6 +20,9 @@ export type ImageContextType = {
     similarityCriterias: SimilarityCriteria[];
     images: GalleryImage[];
     AMOUNT_RANGE: number[];
+    SIZING_RULES: Array<GallerySizingRule>;
+    currentSizingRuleIdx: number;
+    setCurrentSizingRuleIdx: React.Dispatch<React.SetStateAction<number>>;
     imgAmount: number;
     setImgAmount: React.Dispatch<React.SetStateAction<number>>;
     findSimilarImages: (id: number) => void;
@@ -35,4 +38,12 @@ export interface IGalleryImage {
     artist: string;
     category: string;
     isMain: boolean;
+}
+
+export type GallerySizingRule = {
+    base: string;
+    increase: string;
+    baseMainImg: string;
+    increaseMainImg: string;
+    maxImageCount: number;
 }

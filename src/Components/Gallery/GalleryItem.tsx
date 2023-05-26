@@ -1,8 +1,9 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useEffect } from 'react'
 import { FaInfo } from 'react-icons/fa'
 import IconKnob from '../Controls/IconKnob'
 import { ActionsContext } from '../../Contexts/ActionsContext'
-import { ActionsContextType, IGalleryImage } from '../../@types/image'
+import { ActionsContextType, IGalleryImage, ImageContextType } from '../../@types/image'
+import { ImageContext } from '../../Contexts/imageContext'
 
 type Props = {
   imageData: IGalleryImage;
@@ -12,18 +13,29 @@ type Props = {
 
 export default function GalleryItem(props: Props) {
   const actionsContext = useContext(ActionsContext) as ActionsContextType;
+  const imageContext = useContext(ImageContext) as ImageContextType
   const imgRef: any = useRef(null);
   const gridRef: any = useRef(null);
 
+  useEffect(() => {
+    setCalculatedWidth()
+  }, [imageContext.currentSizingRuleIdx])
+
+
   function setCalculatedWidth() {
+    console.log("calc function call")
+    // calc the base width and increase from the amount of images
+    // the size class should probably be on the image context so it can be controlled from the outside
+    let sizingRule = imageContext.SIZING_RULES[imageContext.currentSizingRuleIdx];
     if (imgRef.current == null) {
       return
     }
+
     if (props.imageData.isMain) {
-      imgRef.current.style.width = "calc(15vw + 17vw * " + imgRef.current.naturalWidth + "/ 1400)"
+      imgRef.current.style.width = `calc(${sizingRule.baseMainImg} + ${sizingRule.increaseMainImg} * ${imgRef.current.naturalWidth}/ 1400)`
       imgRef.current.classList.toggle("main-image", true)
     } else {
-      imgRef.current.style.width = "calc(5vw + 18vw * " + imgRef.current.naturalWidth + "/ 1400)"
+      imgRef.current.style.width = `calc(${sizingRule.base} + ${sizingRule.increase} * ${imgRef.current.naturalWidth} / 1400)`
     }
     gridRef.current.classList.toggle("hidden")
     props.onimgLoad()

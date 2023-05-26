@@ -6,8 +6,11 @@ import { ImageContext } from '../../Contexts/imageContext'
 import Lightbox from '../Lightbox/Lightbox'
 import { ActionsContext } from '../../Contexts/ActionsContext'
 
+type Props = {
+  overflowChecker: () => Boolean
+}
 
-export default function MasonryGallery() {
+export default function MasonryGallery(props: Props) {
   const gridRef: any = React.useRef(null)
   const imageContext = React.useContext(ImageContext) as ImageContextType
   const actionsContext = React.useContext(ActionsContext) as ActionsContextType
@@ -22,6 +25,10 @@ export default function MasonryGallery() {
   function resizeOnImgLoad() {
     if (gridRef !== null) {
       gridRef.current.grid.refreshItems().layout()
+    }
+
+    if (props.overflowChecker() && imageContext.currentSizingRuleIdx < imageContext.SIZING_RULES.length - 1) {
+      imageContext.setCurrentSizingRuleIdx(imageContext.currentSizingRuleIdx + 1)
     }
   }
 

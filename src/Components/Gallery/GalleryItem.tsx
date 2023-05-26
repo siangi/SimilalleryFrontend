@@ -20,12 +20,11 @@ export default function GalleryItem(props: Props) {
       return
     }
     if (props.imageData.isMain) {
-      imgRef.current.style.width = "calc(10vw + 20vw * " + imgRef.current.naturalWidth + "/ 1400)"
-      imgRef.current.classList.toggle("main-image")
+      imgRef.current.style.width = "calc(15vw + 17vw * " + imgRef.current.naturalWidth + "/ 1400)"
+      imgRef.current.classList.toggle("main-image", true)
     } else {
       imgRef.current.style.width = "calc(5vw + 18vw * " + imgRef.current.naturalWidth + "/ 1400)"
     }
-
     gridRef.current.classList.toggle("hidden")
     props.onimgLoad()
   }
@@ -33,6 +32,7 @@ export default function GalleryItem(props: Props) {
 
   return (
     <div className='gallery-item-grid hidden' ref={gridRef}>
+      {props.imageData.isMain ? <div className='ambient-back gallery-ambience' style={{ "backgroundImage": `url(${props.imageData.url})` }}></div> : null}
       <img className='gallery-item-img' alt={props.imageData.title} ref={imgRef} src={props.imageData.url} onClick={props.onNextImages} onLoad={setCalculatedWidth}></img>
       <IconKnob positioningClass="gallery-item-button" icon={<FaInfo />} onClick={(event) => { actionsContext.openLightbox(props.imageData) }}></IconKnob>
     </div>

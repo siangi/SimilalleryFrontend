@@ -14,13 +14,12 @@ export default function MasonryGallery(props: Props) {
   const gridRef: any = React.useRef(null)
   const imageContext = React.useContext(ImageContext) as ImageContextType
   const actionsContext = React.useContext(ActionsContext) as ActionsContextType
-  let loadedImageIds: Set<number> = new Set<number>()
 
   React.useEffect(() => {
     if (imageContext.images.length === 0) {
       imageContext.findSimilarsRandom();
     }
-  }, [])
+  })
 
 
   function resizeOnImgLoad() {
@@ -29,14 +28,19 @@ export default function MasonryGallery(props: Props) {
     }
   }
 
+  function handleOverflow() {
+    if (props.overflowChecker() && imageContext.currentSizingRuleIdx < imageContext.SIZING_RULES.length - 1) {
+      imageContext.setCurrentSizingRuleIdx(imageContext.currentSizingRuleIdx + 1)
+      console.log(`sizing rule set to ${imageContext.currentSizingRuleIdx}`)
+    }
+  }
+
   function imageLoadedHandler(id: number) {
     resizeOnImgLoad()
     imageContext.setSingleImageLoaded(id)
     if (imageContext.images.every((img) => img.loaded)) {
-      if (props.overflowChecker() && imageContext.currentSizingRuleIdx < imageContext.SIZING_RULES.length - 1) {
-        imageContext.setCurrentSizingRuleIdx(imageContext.currentSizingRuleIdx + 1)
-        console.log(`sizing rule set to ${imageContext.currentSizingRuleIdx}`)
-      }
+      console.log("handle overflow")
+      handleOverflow()
     }
   }
 

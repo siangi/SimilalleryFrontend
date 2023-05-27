@@ -40,7 +40,21 @@ const ImageProvider = ({ children }: Props) => {
             increase: "12vw",
             baseMainImg: "10vw",
             increaseMainImg: "15vw",
-            maxImageCount: 24
+            maxImageCount: 35
+        },
+        {
+            base: "2vw",
+            increase: "5vw",
+            baseMainImg: "5vw",
+            increaseMainImg: "10vw",
+            maxImageCount: 45,
+        },
+        {
+            base: "1vw",
+            increase: "1vw",
+            baseMainImg: "3vw",
+            increaseMainImg: "3vw",
+            maxImageCount: 75,
         }
     ]
     const [imgAmount, setImgAmount] = useState<number>(16)

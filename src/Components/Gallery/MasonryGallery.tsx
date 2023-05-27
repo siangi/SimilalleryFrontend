@@ -14,6 +14,7 @@ export default function MasonryGallery(props: Props) {
   const gridRef: any = React.useRef(null)
   const imageContext = React.useContext(ImageContext) as ImageContextType
   const actionsContext = React.useContext(ActionsContext) as ActionsContextType
+  let loadedImageIds: Set<number> = new Set<number>()
 
   React.useEffect(() => {
     if (imageContext.images.length === 0) {
@@ -26,9 +27,16 @@ export default function MasonryGallery(props: Props) {
     if (gridRef !== null) {
       gridRef.current.grid.refreshItems().layout()
     }
+  }
 
-    if (props.overflowChecker() && imageContext.currentSizingRuleIdx < imageContext.SIZING_RULES.length - 1) {
-      imageContext.setCurrentSizingRuleIdx(imageContext.currentSizingRuleIdx + 1)
+  function imageLoadedHandler(id: number) {
+    resizeOnImgLoad()
+    imageContext.setSingleImageLoaded(id)
+    if (imageContext.images.every((img) => img.loaded)) {
+      if (props.overflowChecker() && imageContext.currentSizingRuleIdx < imageContext.SIZING_RULES.length - 1) {
+        imageContext.setCurrentSizingRuleIdx(imageContext.currentSizingRuleIdx + 1)
+        console.log(`sizing rule set to ${imageContext.currentSizingRuleIdx}`)
+      }
     }
   }
 
@@ -50,7 +58,7 @@ export default function MasonryGallery(props: Props) {
               // isMain has to be included in the key, otherwise it will not recognise that an image has changed to mainImage 
               // and will not update the component with the proper style
               <DraggableItem key={image.id.toString() + image.isMain.toString()}>
-                <GalleryItem imageData={image} onimgLoad={resizeOnImgLoad} onNextImages={(event) => imageContext.findSimilarImages(image.id)}></GalleryItem>
+                <GalleryItem imageData={image} onimgLoad={imageLoadedHandler} onNextImages={(event) => imageContext.findSimilarImages(image.id)}></GalleryItem>
               </DraggableItem>)
           })
         }

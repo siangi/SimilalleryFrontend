@@ -61,6 +61,6 @@ p {
 }
 
 .overflow-checker {
-  height: 100%;
-  overflow: auto;
+  height: 90vh;
+  border: 2px solid red
 }

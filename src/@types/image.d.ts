@@ -25,6 +25,7 @@ export type ImageContextType = {
     setCurrentSizingRuleIdx: React.Dispatch<React.SetStateAction<number>>;
     imgAmount: number;
     setImgAmount: React.Dispatch<React.SetStateAction<number>>;
+    setSingleImageLoaded: (id: number) => void;
     findSimilarImages: (id: number) => void;
     findSimilarsRandom: () => void
     toggleCriteria: (id: number) => void;
@@ -38,6 +39,7 @@ export interface IGalleryImage {
     artist: string;
     category: string;
     isMain: boolean;
+    loaded: boolean;
 }
 
 export type GallerySizingRule = {

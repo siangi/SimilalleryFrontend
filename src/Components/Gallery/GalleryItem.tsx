@@ -7,7 +7,7 @@ import { ImageContext } from '../../Contexts/imageContext'
 
 type Props = {
   imageData: IGalleryImage;
-  onimgLoad: () => void;
+  onimgLoad: (id: number) => void;
   onNextImages: (event: any) => void;
 }
 
@@ -37,15 +37,19 @@ export default function GalleryItem(props: Props) {
     } else {
       imgRef.current.style.width = `calc(${sizingRule.base} + ${sizingRule.increase} * ${imgRef.current.naturalWidth} / 1400)`
     }
+  }
+
+  function imageLoadHandler() {
+    setCalculatedWidth()
     gridRef.current.classList.toggle("hidden")
-    props.onimgLoad()
+    props.onimgLoad(props.imageData.id)
   }
 
 
   return (
     <div className='gallery-item-grid hidden' ref={gridRef}>
       {props.imageData.isMain ? <div className='ambient-back gallery-ambience' style={{ "backgroundImage": `url(${props.imageData.url})` }}></div> : null}
-      <img className='gallery-item-img' alt={props.imageData.title} ref={imgRef} src={props.imageData.url} onClick={props.onNextImages} onLoad={setCalculatedWidth}></img>
+      <img className='gallery-item-img' alt={props.imageData.title} ref={imgRef} src={props.imageData.url} onClick={props.onNextImages} onLoad={imageLoadHandler}></img>
       <IconKnob positioningClass="gallery-item-button" icon={<FaInfo />} onClick={(event) => { actionsContext.openLightbox(props.imageData) }}></IconKnob>
     </div>
   )

@@ -9,8 +9,9 @@ export default class GalleryImage implements IGalleryImage {
     artist: string;
     category: string;
     isMain: boolean;
-    
-    constructor (id: number, title: string, year: number, url: string, artist: string, category: string, isMain: boolean = false){
+    loaded: boolean;
+
+    constructor(id: number, title: string, year: number, url: string, artist: string, category: string, isMain: boolean = false) {
         this.id = id;
         this.title = title;
         this.year = year;
@@ -18,5 +19,6 @@ export default class GalleryImage implements IGalleryImage {
         this.artist = artist;
         this.category = category;
         this.isMain = isMain;
+        this.loaded = false;
     }
 }

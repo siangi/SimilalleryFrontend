@@ -22,9 +22,9 @@ const ImageProvider = ({ children }: Props) => {
     const [currentSizingRuleIdx, setCurrentSizingRuleIdx] = useState(0)
     const SIZING_RULES: Array<GallerySizingRule> = [
         {
-            base: "38vw",
+            base: "10vw",
             increase: "20vw",
-            baseMainImg: "20vw",
+            baseMainImg: "18vw",
             increaseMainImg: "25vw",
             maxImageCount: 8
         },
@@ -59,6 +59,14 @@ const ImageProvider = ({ children }: Props) => {
             return criteria
         }))
     }
+    const setSingleImageLoaded = (id: number) => {
+        setimages(images.map((img) => {
+            if (img.id === id) {
+                img.loaded = true
+            }
+            return img
+        }))
+    }
 
     const findSimilarImages = (id: number) => {
         const loader = new ImageLoader();
@@ -70,7 +78,7 @@ const ImageProvider = ({ children }: Props) => {
         });
         let provisionalIdx = SIZING_RULES.findIndex((rule) => rule.maxImageCount >= imgAmount)
         setCurrentSizingRuleIdx(provisionalIdx >= 0 ? provisionalIdx : SIZING_RULES.length - 1)
-        console.log(SIZING_RULES[currentSizingRuleIdx])
+        console.log("sizing rule index set to: " + currentSizingRuleIdx);
         loader.loadImagesFromLocalAPI(id, activeCriteriaIDs, imgAmount, setimages);
     }
 
@@ -78,7 +86,7 @@ const ImageProvider = ({ children }: Props) => {
         findSimilarImages(-1)
     }
 
-    return <ImageContext.Provider value={{ images, similarityCriterias, AMOUNT_RANGE, SIZING_RULES, currentSizingRuleIdx, setCurrentSizingRuleIdx, imgAmount, setImgAmount, findSimilarImages, findSimilarsRandom, toggleCriteria }}>
+    return <ImageContext.Provider value={{ images, similarityCriterias, AMOUNT_RANGE, SIZING_RULES, currentSizingRuleIdx, setCurrentSizingRuleIdx, imgAmount, setImgAmount, setSingleImageLoaded, findSimilarImages, findSimilarsRandom, toggleCriteria }}>
         {children}
     </ImageContext.Provider>
 }

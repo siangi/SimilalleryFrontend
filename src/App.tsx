@@ -1,26 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import './css/App.css';
 import MasonryGallery from './Components/Gallery/MasonryGallery';
 import ActionsProvider from './Contexts/ActionsContext';
-import ImageProvider, { ImageContext } from './Contexts/imageContext';
-import Menu from './Components/Menu/Menu';
-import QuickControls from './Components/Menu/QuickControls';
+import ImageProvider from './Contexts/imageContext';
 
 
+type Props = {
+  children: any
+}
 
-
-function App() {
-  const [isMenuVisible, setIsMenuVisible] = useState<Boolean>(false)
+function App(props: Props) {
 
   return (
     <div className="App">
-      <ImageProvider>
-        <ActionsProvider>
-          {isMenuVisible ? <Menu closeAction={(event) => setIsMenuVisible(false)}></Menu>
-            : (<QuickControls toggleMenu={setIsMenuVisible}></QuickControls>)}
-          <MasonryGallery></MasonryGallery>
-        </ActionsProvider>
-      </ImageProvider>
+      {props.children}
     </div>
   );
 }

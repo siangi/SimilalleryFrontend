@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from "react-router-dom"
 import { FaCog } from 'react-icons/fa'
 import IconKnob from '../Controls/IconKnob'
 import PrimaryButton from '../Controls/PrimaryButton'
@@ -19,7 +20,9 @@ export default function QuickControls(props: Props) {
         <div className='small-menu'>
             <h3 id="current-options">Showing images with similar: {similarityCriteriasReducer()}</h3>
             <div className='quick-controls'>
-                <IconKnob icon={<FaCog />} onClick={(event: React.MouseEvent) => props.toggleMenu(true)}></IconKnob>
+                <Link to="menu">
+                    <IconKnob icon={<FaCog />} onClick={() => { }}></IconKnob>
+                </Link>
                 <PrimaryButton text='random search' onClick={(event) => imageContext.findSimilarsRandom()}></PrimaryButton>
             </div>
         </div>

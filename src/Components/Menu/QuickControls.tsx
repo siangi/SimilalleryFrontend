@@ -13,24 +13,21 @@ type Props = {
 }
 
 export default function QuickControls(props: Props) {
-    function similarityCriteriasReducer() {
-        return imageContext.similarityCriterias.filter((val) => val.active).map((val) => val.title).join(" / ")
-    }
     const imageContext = useContext(ImageContext) as ImageContextType
     return (
         <div className='small-menu'>
-            <CheckboxChip
-                checked={true}
-                icon={<FaPalette></FaPalette>}
-                name='palette'
-                labelText='palette'
-                onChange={() => {}}></CheckboxChip>
-            <CheckboxChip
-                checked={false}
-                icon={<FaMapMarkerAlt></FaMapMarkerAlt>}
-                name='slaiency'
-                labelText='slaiency'
-                onChange={() => {}}></CheckboxChip>
+            {
+                imageContext.similarityCriterias.map((criteria, idx) => (
+                    <CheckboxChip
+                        checked={imageContext.similarityCriterias[idx].active}
+                        labelText={criteria.title}
+                        name={criteria.internalName}                        
+                        onChange={() => imageContext.toggleCriteria(criteria.id)}
+                        icon={<FaMapMarkerAlt></FaMapMarkerAlt>}
+                        key={idx}
+                    ></CheckboxChip>
+                ))
+            }
             <Link to="menu">
                 <IconKnob icon={<FaCog />} onClick={() => { }}></IconKnob>
             </Link>

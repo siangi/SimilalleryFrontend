@@ -39,11 +39,15 @@ h1 {
   padding: var(--base-padding);
 }
 
+.main-page{
+  padding: 2rem
+}
+
 h3 {
   font-size: var(--text-m);
 }
 
 p {
   margin: 0;
-  font-size: var(--text-s);
+  font-size: var(--text-xs);
 }

@@ -75,3 +75,33 @@ input[type="checkbox"] {
     height: 0.2rem;
     background-color: var(--accent-color);
 }
+
+.chip{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: fit-content;
+    font-size: var(--text-s);
+    color: var(--accent-color);
+    padding: 0 1.5rem;
+    border: 0.1rem solid var(--accent-color);
+    border-radius: 2rem;
+    transition-duration: 500ms;
+}
+
+.chip input[type="checkbox"]{
+    display: none;
+}
+
+.chip.checked-chip{
+    border: 0.25rem solid var(--accent-color);
+    border-radius: 0;
+}
+
+.transparent{
+    opacity: 0;
+}
+
+

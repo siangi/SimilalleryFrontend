@@ -8,6 +8,7 @@ import { ImageContextType } from '../@types/image'
 import AmountSlider from '../Components/Menu/AmountSlider'
 import IconKnob from '../Components/Controls/IconKnob'
 import PrimaryButton from '../Components/Controls/PrimaryButton'
+import SplitGrid from '../Components/Layouts/SplitGrid'
 
 type Props = {
 }
@@ -15,7 +16,7 @@ type Props = {
 export default function Menu(props: Props) {
     const imageContext = React.useContext(ImageContext) as ImageContextType
     return (
-        <div className='menu-container overlay'>
+        <div className='menu-container'>
             <nav>
                 <h1>Similallery</h1>
                 <div className='quick-controls'>
@@ -25,6 +26,7 @@ export default function Menu(props: Props) {
                     </Link>
                 </div>
             </nav>
+
             <div className='search-option-container'>
                 <div className='amount-container'>
                     <AmountSlider
@@ -39,11 +41,18 @@ export default function Menu(props: Props) {
                 </div>
                 {
                     imageContext.similarityCriterias.map((criteria, index) => (
-                        <SearchOption
-                            checked={imageContext.similarityCriterias[index].active}
-                            labelText={criteria.title} name={criteria.internalName}
-                            onChange={(event) => { imageContext.toggleCriteria(criteria.id) }}
-                            imagePath={process.env.PUBLIC_URL + criteria.explainerImgPath}></SearchOption>
+                        <SplitGrid
+                            titleElement={
+                                <SearchOption
+                                    checked={imageContext.similarityCriterias[index].active}
+                                    labelText={criteria.title} name={criteria.internalName}
+                                    onChange={(event) => { imageContext.toggleCriteria(criteria.id) }}></SearchOption>
+                            }
+                            imageElement={
+                                <img src={process.env.PUBLIC_URL + criteria.explainerImgPath} alt={`Explainer Image for ${criteria.title}`}></img>
+                            }
+                            description="testdescription"
+                        ></SplitGrid>
                     ))
                 }
             </div>

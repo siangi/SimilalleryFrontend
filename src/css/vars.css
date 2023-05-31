@@ -10,5 +10,7 @@
     --header-text-size: 3.157rem;
     --control-text-size: 1.777rem;
     --subtitle-text-size: 1.777rem;
-    --paragraph-size: 1.333rem
+    --paragraph-size: 1.333rem;
+
+    --grid-border: 0.1rem solid var(--accent-color);
 }

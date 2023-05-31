@@ -1,0 +1,54 @@
+@import "../../css/vars.css";
+
+.split-grid {
+    width: 100%;
+    height: 20rem;
+    display: grid;
+    grid-template-columns: [image-column]50% [text-column]50%;
+    grid-template-rows: 33% 67%;
+    gap: 0;
+    border-top: var(--grid-border);
+    border-bottom: var(--grid-border);
+}
+
+.split-grid:nth-child(2n) {
+    grid-template-columns: [text-column]50% [image-column]50%;
+}
+
+.split-grid:nth-child(2n) .split-grid-text {
+    border-right: var(--grid-border);
+    border-left: none;
+}
+
+.split-grid:nth-child(2n) .split-grid-title {
+    border-right: var(--grid-border);
+    border-left: none;
+}
+
+
+
+.split-grid-image {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column: image-column;
+    padding: 2rem;
+}
+
+.split-grid-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.split-grid-title {
+    grid-row: 1;
+    grid-column: text-column;
+    border-left: var(--grid-border);
+    border-bottom: var(--grid-border);
+}
+
+
+.split-grid-text {
+    grid-column: text-column;
+    border-left: var(--grid-border);
+}

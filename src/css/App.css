@@ -3,6 +3,7 @@
 @import "../Components/Lightbox/Lightbox.css";
 @import "../Components/Gallery/Gallery.css";
 @import "../Components/Menu/Menu.css";
+@import "../Components/Layouts/small-layouts.css";
 
 body {
   margin: 0;

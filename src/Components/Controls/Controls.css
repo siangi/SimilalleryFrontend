@@ -7,7 +7,7 @@ button {
     background: transparent;
     color: var(--accent-color);
     font-family: var(--base-font);
-    font-size: var(--control-text-size);
+    font-size: var(--text-m);
     font-weight: 600;
     padding: 0.3rem;
 }
@@ -27,25 +27,25 @@ button {
 }
 
 .icon-knob svg {
-    font-size: var(--control-text-size);
-    height: var(--control-text-size);
-    width: var(--control-text-size);
+    font-size: var(--text-m);
+    height: var(--text-m);
+    width: var(--text-m);
 }
 
 input,
 label {
     accent-color: var(--accent-color);
-    font-size: var(--control-text-size);
+    font-size: var(--text-m);
 }
 
 input[type="checkbox"] {
-    height: calc(var(--control-text-size) - 0.5rem);
-    width: calc(var(--control-text-size) - 0.5rem);
+    height: calc(var(--text-m) - 0.5rem);
+    width: calc(var(--text-m) - 0.5rem);
 }
 
 
 .slider {
-    width: 20rem;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -58,7 +58,7 @@ input[type="checkbox"] {
     background-color: var(--accent-color);
     color: white;
     font-weight: 600;
-    font-size: calc(var(--control-text-size) * 0.75);
+    font-size: calc(var(--text-m) * 0.75);
     display: flex;
     flex-direction: column;
     justify-content: center;

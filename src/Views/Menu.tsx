@@ -1,44 +1,63 @@
 import React, { MouseEventHandler } from 'react'
 import { Link } from "react-router-dom"
 import { FaTimes } from 'react-icons/fa'
-
+import { useNavigate } from 'react-router-dom'
 import SearchOption from '../Components/Menu/SearchOption'
 import { ImageContext } from '../Contexts/imageContext'
 import { ImageContextType } from '../@types/image'
 import AmountSlider from '../Components/Menu/AmountSlider'
-import IconKnob from '../Components/Controls/IconKnob'
-import PrimaryButton from '../Components/Controls/PrimaryButton'
 import SplitGrid from '../Components/Layouts/SplitGrid'
+import SplitGridSlim from '../Components/Layouts/SplitGridSlim'
+import NavigationLink from '../Components/MenuNavigation/NavigationLink'
+import { useContext } from 'react'
 
 type Props = {
 }
 
 export default function Menu(props: Props) {
+    const navigate = useNavigate()
+
     const imageContext = React.useContext(ImageContext) as ImageContextType
+
+    function returnToMain(){
+        // crate a new request with the new parameters
+        imageContext.findSimilarImages(imageContext.images[0].id)
+        navigate("/")
+    }
+
     return (
         <div className='menu-container'>
             <nav>
-                <h1>Similallery</h1>
-                <div className='quick-controls'>
-                    <PrimaryButton onClick={() => { }} text='About'></PrimaryButton>
-                    <Link to="/">
-                        <IconKnob icon={<FaTimes />} onClick={() => { }}></IconKnob>
-                    </Link>
-                </div>
+                <SplitGridSlim
+                    descriptionElement={<h1>Similallery</h1>}
+                    descriptionFilled={true}
+                    imageElement={
+                        <ul className='menu-nav-links'>
+                            <NavigationLink isActive={true} title="options" onClick={() => {console.log("")}}></NavigationLink>
+                            <NavigationLink isActive={false} title="how to" onClick={() => {console.log("")}}></NavigationLink>
+                            <NavigationLink isActive={false} title="about" onClick={() => {console.log("")}}></NavigationLink>
+                            <NavigationLink isActive={false} title="back" onClick={() => {returnToMain()}}></NavigationLink>
+                        </ul>
+                    }
+                ></SplitGridSlim>
             </nav>
-
+            <div className='halfgrid'>
+                    <p>The Similallery opens a new way to experience an art collection by grouping images based on visual similarities (which are explained below). The Image with a purple border is the base and each of the other images on the screen is similar to it in one way but different in many others. Click on the images to explore the full breadth of a gigantic art collection.</p>
+            </div>        
+            
             <div className='search-option-container'>
-                <div className='amount-container'>
-                    <AmountSlider
+                <SplitGridSlim
+                    imageElement={<AmountSlider
                         name="img-amount"
-                        labeltext='Amount of Images'
+                        labeltext=''
                         min={imageContext.AMOUNT_RANGE[0]}
                         max={imageContext.AMOUNT_RANGE[1]}
                         startVal={imageContext.imgAmount}
-                        onChange={(newVal, thumb) => { imageContext.setImgAmount(newVal) }
-                        }
-                    ></AmountSlider>
-                </div>
+                        onChange={(newVal, thumb) => { imageContext.setImgAmount(newVal) }}
+                    ></AmountSlider>}
+                    descriptionElement={<label>Amount of Images</label>}
+                    descriptionFilled={false}
+                ></SplitGridSlim>
                 {
                     imageContext.similarityCriterias.map((criteria, index) => (
                         <SplitGrid
@@ -51,10 +70,23 @@ export default function Menu(props: Props) {
                             imageElement={
                                 <img src={process.env.PUBLIC_URL + criteria.explainerImgPath} alt={`Explainer Image for ${criteria.title}`}></img>
                             }
-                            description="testdescription"
+                            descriptionElement={<p>{imageContext.similarityCriterias[index].description}</p>}
+                            titleFilled={false}
                         ></SplitGrid>
                     ))
                 }
+                <SplitGrid titleElement={<h3>How to use</h3>}
+                    titleFilled={true}
+                    imageElement={<p></p>}
+                    descriptionElement={<p></p>}></SplitGrid>
+                <SplitGrid
+                    titleElement={<h3>About</h3>}
+                    titleFilled={true}
+                    imageElement={<p>This Website and the backend it uses were developed by Simon Gisler for his Bachelor Thesis for Digital Ideation at the University of Applied Sciences Lucerne. 
+                        All the images displayed have been released online by the museums that own them and are free to use. You can find all of them in higher resolution and with more information on ArtVee.com
+                        If you have any questions about how it works or if you want to use the code contact me!</p>}
+                    descriptionElement={<p>simongisler.ch</p>}
+                ></SplitGrid>
             </div>
         </div>
     )

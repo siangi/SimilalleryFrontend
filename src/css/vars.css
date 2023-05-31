@@ -7,10 +7,12 @@
     --base-padding: 2rem;
     --base-font: "Space Grotesk", sans-serif;
 
-    --header-text-size: 3.157rem;
-    --control-text-size: 1.777rem;
-    --subtitle-text-size: 1.777rem;
-    --paragraph-size: 1.333rem;
+    --text-xxl: 4.209rem;
+    --text-xl: 3.157rem;
+    --text-l: 2.396rem;
+    --text-m: 1.777rem;
+    --text-s: 1rem;
 
+    --text-xxl: 4.209rem;
     --grid-border: 0.1rem solid var(--accent-color);
 }

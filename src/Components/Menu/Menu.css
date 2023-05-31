@@ -19,6 +19,8 @@
 .criteria-chip-container{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 50vw;
     justify-content: space-between;
     align-items: center;
 }
@@ -52,6 +54,7 @@
     list-style: none;
     text-decoration: underline;
     font-size: var(--text-m);
+    padding: 0 1rem;
 }
 
 ul {

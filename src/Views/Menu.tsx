@@ -21,7 +21,6 @@ export default function Menu(props: Props) {
 
     function returnToMain(){
         // crate a new request with the new parameters
-        imageContext.findSimilarImages(imageContext.images[0].id)
         navigate("/")
     }
 

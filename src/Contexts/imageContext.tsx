@@ -40,7 +40,7 @@ const ImageProvider = ({ children }: Props) => {
         if(images.length > 0){
             findSimilarImages(images[0].id)
         }        
-    }, [similarityCriterias])
+    }, [similarityCriterias, imgAmount])
     
 
     const findSimilarImages = (id: number) => {

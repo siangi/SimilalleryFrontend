@@ -1,3 +1,4 @@
+import { JsxElement } from "typescript";
 import GalleryImage from "../Models/GalleryImage";
 
 export type ActionsContextType = {
@@ -14,6 +15,7 @@ export type SimilarityCriteria = {
     description: string;
     active: boolean;
     explainerImgPath: string
+    icon: ReactElement;
 }
 
 export type ImageContextType = {

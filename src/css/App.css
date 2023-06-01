@@ -27,7 +27,7 @@ h1 {
 }
 
 .hidden {
-  display: none
+  opacity: 0;
 }
 
 .ambient-back {
@@ -75,6 +75,7 @@ p {
 }
 
 .overflow-checker {
-  height: 90vh;
-  border: 2px solid red
+  height: 85vh;
+  /* border: 2px solid red; */
+  /* overflow: auto; */
 }

@@ -22,6 +22,7 @@ export type ImageContextType = {
     images: GalleryImage[];
     findSimilarImages: (id: number) => void;
     findSimilarsRandom: () => void
+    resetImagesLoaded: () => void
     setSingleImageLoaded: (id: number) => void;
 }
 

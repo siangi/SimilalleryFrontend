@@ -24,7 +24,6 @@ export default function GalleryItem(props: Props) {
 
 
   function setCalculatedWidth() {
-    console.log("calc function call")
     // calc the base width and increase from the amount of images
     // the size class should probably be on the image context so it can be controlled from the outside
     let sizingRule = settingsContext.SIZING_RULES[settingsContext.currentSizingRuleIdx];
@@ -42,8 +41,8 @@ export default function GalleryItem(props: Props) {
 
   function imageLoadHandler() {
     setCalculatedWidth()
-    gridRef.current.classList.toggle("hidden")
     props.onimgLoad(props.imageData.id)
+    gridRef.current.classList.toggle("hidden")
   }
 
 

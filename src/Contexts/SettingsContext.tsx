@@ -71,20 +71,27 @@ function SettingsProvider(props: Props) {
             increase: "12vw",
             baseMainImg: "10vw",
             increaseMainImg: "15vw",
-            maxImageCount: 35
+            maxImageCount: 25
         },
         {
-            base: "2vw",
-            increase: "5vw",
-            baseMainImg: "5vw",
-            increaseMainImg: "10vw",
+            base: "3vw",
+            increase: "12vw",
+            baseMainImg: "8vw",
+            increaseMainImg: "15vww",
+            maxImageCount: 30,
+        },
+        {
+            base: "3vw",
+            increase: "8vw",
+            baseMainImg: "8vw",
+            increaseMainImg: "15vw",
             maxImageCount: 45,
         },
         {
-            base: "1vw",
-            increase: "1vw",
-            baseMainImg: "3vw",
-            increaseMainImg: "3vw",
+            base: "3vw",
+            increase: "5vw",
+            baseMainImg: "5vw",
+            increaseMainImg: "7vw",
             maxImageCount: 75,
         }
     ]

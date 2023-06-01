@@ -26,8 +26,8 @@ const ImageProvider = ({ children }: Props) => {
     const findSimilarImages = (id: number) => {
         const loader = new ImageLoader();
         const activeCriteriaIDs: number[] = settingsContext.getActiveSimilarityIds()
-        settingsContext.calcSizingRuleIdx()
         loader.loadImagesFromLocalAPI(id, activeCriteriaIDs, settingsContext.imgAmount, setimages);
+        settingsContext.calcSizingRuleIdx()
     }
 
     const setSingleImageLoaded = (id: number) => {
@@ -39,11 +39,19 @@ const ImageProvider = ({ children }: Props) => {
         }))
     }
 
+    const resetImagesLoaded = () => {
+        console.log("reset loaded")
+        setimages(images.map((img) => {
+            img.loaded = false;
+            return img
+        }))
+    }
+
     const findSimilarsRandom = () => {
         findSimilarImages(-1)
     }
 
-    return <ImageContext.Provider value={{ images, findSimilarImages, findSimilarsRandom, setSingleImageLoaded }}>
+    return <ImageContext.Provider value={{ images, findSimilarImages, findSimilarsRandom, setSingleImageLoaded, resetImagesLoaded }}>
         {children}
     </ImageContext.Provider>
 }

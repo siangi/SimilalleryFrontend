@@ -32,7 +32,6 @@ export default function GalleryItem(props: Props) {
 
   return (
     <div className='gallery-item-grid hidden' ref={gridRef}>
-      {props.imageData.isMain ? <div className='ambient-back gallery-ambience' style={{ "backgroundImage": `url(${props.imageData.url})` }}></div> : null}
       <img className='gallery-item-img' alt={props.imageData.title} ref={imgRef} src={props.imageData.url} onClick={props.onNextImages} onLoad={setCalculatedWidth}></img>
       <IconKnob positioningClass="gallery-item-button" icon={<FaInfo />} onClick={(event) => { actionsContext.openLightbox(props.imageData) }}></IconKnob>
     </div>

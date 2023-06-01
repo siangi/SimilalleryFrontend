@@ -1,7 +1,7 @@
 #lightbox {
     display: grid;
-    grid-template-columns: calc(75vw - 1.5rem) calc(25vw - 1.5rem);
-    grid-template-rows: calc(75vh - 1.5rem) calc(25vh - 1.5rem);
+    grid-template-columns: calc(75vw - var(--base-padding)) calc(25vw - var(--base-padding));
+    grid-template-rows: calc(75vh - var(--base-padding)) calc(25vh - var(--base-padding));
 }
 
 
@@ -21,7 +21,7 @@
 }
 
 .lightbox-info {
-    padding-left: 1rem;
+    padding: 2rem 1.5rem;
     background-color: var(--background-color);
     width: 100%;
     height: fit-content;

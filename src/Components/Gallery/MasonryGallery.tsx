@@ -1,10 +1,11 @@
 import React from 'react'
 import DraggableGrid, { DraggableItem } from 'ruuri'
 import GalleryItem from './GalleryItem'
-import { ActionsContextType, ImageContextType } from '../../@types/image'
+import { ActionsContextType, ImageContextType, SettingsContextType } from '../../@types/image'
 import { ImageContext } from '../../Contexts/imageContext'
 import Lightbox from '../Lightbox/Lightbox'
 import { ActionsContext } from '../../Contexts/ActionsContext'
+import { SettingsContext } from '../../Contexts/SettingsContext'
 
 type Props = {
   overflowChecker: () => Boolean
@@ -13,6 +14,7 @@ type Props = {
 export default function MasonryGallery(props: Props) {
   const gridRef: any = React.useRef(null)
   const imageContext = React.useContext(ImageContext) as ImageContextType
+  const settingsContext = React.useContext(SettingsContext) as SettingsContextType
   const actionsContext = React.useContext(ActionsContext) as ActionsContextType
 
   React.useEffect(() => {
@@ -29,9 +31,9 @@ export default function MasonryGallery(props: Props) {
   }
 
   function handleOverflow() {
-    if (props.overflowChecker() && imageContext.currentSizingRuleIdx < imageContext.SIZING_RULES.length - 1) {
-      imageContext.setCurrentSizingRuleIdx(imageContext.currentSizingRuleIdx + 1)
-      console.log(`sizing rule set to ${imageContext.currentSizingRuleIdx}`)
+    if (props.overflowChecker() && settingsContext.currentSizingRuleIdx < settingsContext.SIZING_RULES.length - 1) {
+      settingsContext.setCurrentSizingRuleIdx(settingsContext.currentSizingRuleIdx + 1)
+      console.log(`sizing rule set to ${settingsContext.currentSizingRuleIdx}`)
     }
   }
 

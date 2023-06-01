@@ -1,12 +1,12 @@
 import React, { useContext, useRef } from 'react'
-import { ActionsContextType, ImageContextType } from '../../@types/image'
+import { ActionsContextType } from '../../@types/image'
 import { useState } from 'react'
 import { ActionsContext } from '../../Contexts/ActionsContext'
 import LightboxInfo from './LightboxInfo'
 
 type Props = {}
 
-export default function Lightbox({ }: Props) {
+export default function Lightbox(props: Props) {
     const actionsContext = useContext(ActionsContext) as ActionsContextType
     const imageRef: any = useRef(null)
     const [isImageWide, setIsImageWide] = useState(false)

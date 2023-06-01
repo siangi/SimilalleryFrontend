@@ -1,3 +1,4 @@
+import { JsxElement } from "typescript";
 import GalleryImage from "../Models/GalleryImage";
 
 export type ActionsContextType = {
@@ -14,20 +15,26 @@ export type SimilarityCriteria = {
     description: string;
     active: boolean;
     explainerImgPath: string
+    icon: ReactElement;
 }
 
 export type ImageContextType = {
-    similarityCriterias: SimilarityCriteria[];
     images: GalleryImage[];
-    AMOUNT_RANGE: number[];
-    SIZING_RULES: Array<GallerySizingRule>;
-    currentSizingRuleIdx: number;
-    setCurrentSizingRuleIdx: React.Dispatch<React.SetStateAction<number>>;
-    imgAmount: number;
-    setImgAmount: React.Dispatch<React.SetStateAction<number>>;
-    setSingleImageLoaded: (id: number) => void;
     findSimilarImages: (id: number) => void;
     findSimilarsRandom: () => void
+    setSingleImageLoaded: (id: number) => void;
+}
+
+export type SettingsContextType = {
+    similarityCriterias: SimilarityCriteria[];
+    AMOUNT_RANGE: number[];
+    imgAmount: number;
+    setImgAmount: React.Dispatch<React.SetStateAction<number>>;
+    SIZING_RULES: Array<GallerySizingRule>;
+    currentSizingRuleIdx: number;
+    calcSizingRuleIdx: () => void;
+    setCurrentSizingRuleIdx: React.Dispatch<React.SetStateAction<number>>;
+    getActiveSimilarityIds: () => number[];
     toggleCriteria: (id: number) => void;
 }
 

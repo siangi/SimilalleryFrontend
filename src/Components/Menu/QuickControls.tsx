@@ -1,26 +1,40 @@
 import React, { useContext } from 'react'
-import { FaCog } from 'react-icons/fa'
+import { Link } from "react-router-dom"
+import { FaRandom, FaQuestion } from 'react-icons/fa'
 import IconKnob from '../Controls/IconKnob'
-import PrimaryButton from '../Controls/PrimaryButton'
-import { ImageContextType, SimilarityCriteria } from '../../@types/image'
+import { ImageContextType, SettingsContextType } from '../../@types/image'
 import { ImageContext } from '../../Contexts/imageContext'
-import { string } from 'yargs'
+import CheckboxChip from '../Controls/CheckboxChip'
+import { SettingsContext } from '../../Contexts/SettingsContext'
 
 type Props = {
     toggleMenu: (value: boolean) => void;
 }
 
 export default function QuickControls(props: Props) {
-    function similarityCriteriasReducer() {
-        return imageContext.similarityCriterias.filter((val) => val.active).map((val) => val.title).join(" / ")
-    }
     const imageContext = useContext(ImageContext) as ImageContextType
+    const settingsContext = useContext(SettingsContext) as SettingsContextType
     return (
         <div className='small-menu'>
-            <h3 id="current-options">Showing images with similar: {similarityCriteriasReducer()}</h3>
+            <div className='criteria-chip-container'>
+                {
+                    settingsContext.similarityCriterias.map((criteria, idx) => (
+                        <CheckboxChip
+                            checked={settingsContext.similarityCriterias[idx].active}
+                            labelText={criteria.title}
+                            name={criteria.internalName}
+                            onChange={() => settingsContext.toggleCriteria(criteria.id)}
+                            icon={criteria.icon}
+                            key={idx}
+                        ></CheckboxChip>
+                    ))
+                }
+            </div>
             <div className='quick-controls'>
-                <IconKnob icon={<FaCog />} onClick={(event: React.MouseEvent) => props.toggleMenu(true)}></IconKnob>
-                <PrimaryButton text='random search' onClick={(event) => imageContext.findSimilarsRandom()}></PrimaryButton>
+                <Link to="menu">
+                    <IconKnob icon={<FaQuestion />} onClick={() => { }}></IconKnob>
+                </Link>
+                <IconKnob icon={<FaRandom />} onClick={(event) => imageContext.findSimilarsRandom()}></IconKnob>
             </div>
         </div>
     )

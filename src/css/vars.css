@@ -1,20 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
-
 :root {
     --background-color: white;
-    --overlay-background: rgba(248, 243, 243, 0.95);
+    --overlay-background: rgba(248, 243, 243, 0.9);
     --accent-color: #6B0292;
     --text-color: black;
     --base-padding: 2rem;
     --base-font: "Space Grotesk", sans-serif;
 
-    /* --background-color: #111115; */
-    /* --accent-color: #FF7A2F; */
-    /* --accent-color: #FFEA2F; */
-    /* --overlay-background: rgba(17, 17, 21, 90%); */
-    /* --text-color: white; */
-    --header-text-size: 3.157rem;
-    --control-text-size: 1.777rem;
-    --subtitle-text-size: 1.777rem;
-    --paragraph-size: 1.333rem
+    --text-xxl: 4.209rem;
+    --text-xl: 3.157rem;
+    --text-l: 2.396rem;
+    --text-m: 1.777rem;
+    --text-s: 1.333rem;
+    --text-xs: 1rem;
+
+    --base-wght: "wght" 400;
+    --heading-wght: "wght" 600;
+    --text-xxl: 4.209rem;
+    --grid-border: 0.1rem solid var(--accent-color);
+
+    --micro-anim-len: 250ms;
 }

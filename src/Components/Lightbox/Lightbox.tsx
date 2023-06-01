@@ -22,8 +22,11 @@ export default function Lightbox(props: Props) {
             {actionsContext.focusedImage !== null ?
                 (<>
                     <img className={`lightbox-image ${isImageWide ? "lightbox-image-wide" : "lightbox-image-tall"}`} src={actionsContext.focusedImage.url} alt={actionsContext.focusedImage.title} onLoad={onImageLoaded} ref={imageRef} />
+                    <div className={`ambient-back ${isImageWide ? "lightbox-image-wide" : "lightbox-image-tall"}`}
+                        style={{ "backgroundImage": `url(${actionsContext.focusedImage.url})` }}></div>
                     <LightboxInfo imageTitle={actionsContext.focusedImage?.title} artist={actionsContext.focusedImage.artist} category={actionsContext.focusedImage.category}></LightboxInfo>
-                </>) : null}
-        </div>
+                </>) : null
+            }
+        </div >
     )
 }

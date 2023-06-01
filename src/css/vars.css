@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
-
 :root {
     --background-color: white;
-    --overlay-background: rgba(248, 243, 243, 0.75);
+    --overlay-background: rgba(248, 243, 243, 0.9);
     --accent-color: #6B0292;
     --base-padding: 2rem;
     --base-font: "Space Grotesk", sans-serif;
@@ -14,6 +12,10 @@
     --text-s: 1.333rem;
     --text-xs: 1rem;
 
+    --base-wght: "wght" 400;
+    --heading-wght: "wght" 600;
     --text-xxl: 4.209rem;
     --grid-border: 0.1rem solid var(--accent-color);
+
+    --micro-anim-len: 250ms;
 }

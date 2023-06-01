@@ -8,7 +8,7 @@ button {
     color: var(--accent-color);
     font-family: var(--base-font);
     font-size: var(--text-m);
-    font-weight: 600;
+    font-variation-settings: "wght" 600;
     padding: 0.3rem;
 }
 
@@ -36,6 +36,7 @@ input,
 label {
     accent-color: var(--accent-color);
     font-size: var(--text-m);
+    font-variation-settings: var(--heading-wght);
 }
 
 input[type="checkbox"] {
@@ -57,7 +58,7 @@ input[type="checkbox"] {
     width: 2rem;
     background-color: var(--accent-color);
     color: white;
-    font-weight: 600;
+    font-variation-settings: "wght" 600;
     font-size: calc(var(--text-m) * 0.75);
     display: flex;
     flex-direction: column;
@@ -76,7 +77,7 @@ input[type="checkbox"] {
     background-color: var(--accent-color);
 }
 
-.chip{
+.chip {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -89,20 +90,22 @@ input[type="checkbox"] {
     padding: 0 1.5rem;
     border: 0.1rem solid var(--accent-color);
     border-radius: 2rem;
-    transition-duration: 250ms;
+    transition-duration: 150ms;
 }
 
-.chip input[type="checkbox"]{
+.chip:hover {
+    border: 0.2rem solid var(--accent-color);
+}
+
+.chip input[type="checkbox"] {
     display: none;
 }
 
-.chip.checked-chip{
+.chip.checked-chip {
     border: 0.25rem solid var(--accent-color);
     border-radius: 0;
 }
 
-.transparent{
+.transparent {
     opacity: 0;
 }
-
-

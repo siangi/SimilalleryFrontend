@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import SearchOption from '../Components/Menu/SearchOption'
-import { ImageContext } from '../Contexts/imageContext'
-import { ImageContextType } from '../@types/image'
+import { SettingsContext } from '../Contexts/SettingsContext'
+import { SettingsContextType } from '../@types/image'
 import AmountSlider from '../Components/Menu/AmountSlider'
 import SplitGrid from '../Components/Layouts/SplitGrid'
 import SplitGridSlim from '../Components/Layouts/SplitGridSlim'
@@ -25,7 +25,7 @@ export default function Menu(props: Props) {
         }
     }
 
-    const imageContext = React.useContext(ImageContext) as ImageContextType
+    const settingsContext = React.useContext(SettingsContext) as SettingsContextType
 
     return (
         <div className='menu-container'>
@@ -52,27 +52,27 @@ export default function Menu(props: Props) {
                     imageElement={<AmountSlider
                         name="img-amount"
                         labeltext=''
-                        min={imageContext.AMOUNT_RANGE[0]}
-                        max={imageContext.AMOUNT_RANGE[1]}
-                        startVal={imageContext.imgAmount}
-                        onChange={(newVal, thumb) => { imageContext.setImgAmount(newVal) }}
+                        min={settingsContext.AMOUNT_RANGE[0]}
+                        max={settingsContext.AMOUNT_RANGE[1]}
+                        startVal={settingsContext.imgAmount}
+                        onChange={(newVal, thumb) => { settingsContext.setImgAmount(newVal) }}
                     ></AmountSlider>}
                     descriptionElement={<label>Amount of Images</label>}
                     descriptionFilled={false}
                 ></SplitGridSlim>
                 {
-                    imageContext.similarityCriterias.map((criteria, index) => (
+                    settingsContext.similarityCriterias.map((criteria, index) => (
                         <SplitGrid
                             titleElement={
                                 <SearchOption
-                                    checked={imageContext.similarityCriterias[index].active}
+                                    checked={settingsContext.similarityCriterias[index].active}
                                     labelText={criteria.title} name={criteria.internalName}
-                                    onChange={(event) => { imageContext.toggleCriteria(criteria.id) }}></SearchOption>
+                                    onChange={(event) => { settingsContext.toggleCriteria(criteria.id) }}></SearchOption>
                             }
                             imageElement={
                                 <img src={process.env.PUBLIC_URL + criteria.explainerImgPath} alt={`Explainer for ${criteria.title}`}></img>
                             }
-                            descriptionElement={<p>{imageContext.similarityCriterias[index].description}</p>}
+                            descriptionElement={<p>{settingsContext.similarityCriterias[index].description}</p>}
                             titleFilled={false}
                         ></SplitGrid>
                     ))

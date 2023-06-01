@@ -2,9 +2,10 @@ import React, { useContext } from 'react'
 import { Link } from "react-router-dom"
 import { FaRandom, FaQuestion } from 'react-icons/fa'
 import IconKnob from '../Controls/IconKnob'
-import { ImageContextType } from '../../@types/image'
+import { ImageContextType, SettingsContextType } from '../../@types/image'
 import { ImageContext } from '../../Contexts/imageContext'
 import CheckboxChip from '../Controls/CheckboxChip'
+import { SettingsContext } from '../../Contexts/SettingsContext'
 
 type Props = {
     toggleMenu: (value: boolean) => void;
@@ -12,16 +13,17 @@ type Props = {
 
 export default function QuickControls(props: Props) {
     const imageContext = useContext(ImageContext) as ImageContextType
+    const settingsContext = useContext(SettingsContext) as SettingsContextType
     return (
         <div className='small-menu'>
             <div className='criteria-chip-container'>
                 {
-                    imageContext.similarityCriterias.map((criteria, idx) => (
+                    settingsContext.similarityCriterias.map((criteria, idx) => (
                         <CheckboxChip
-                            checked={imageContext.similarityCriterias[idx].active}
+                            checked={settingsContext.similarityCriterias[idx].active}
                             labelText={criteria.title}
                             name={criteria.internalName}
-                            onChange={() => imageContext.toggleCriteria(criteria.id)}
+                            onChange={() => settingsContext.toggleCriteria(criteria.id)}
                             icon={criteria.icon}
                             key={idx}
                         ></CheckboxChip>

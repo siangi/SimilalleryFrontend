@@ -19,13 +19,16 @@ export type SimilarityCriteria = {
 }
 
 export type ImageContextType = {
-    similarityCriterias: SimilarityCriteria[];
     images: GalleryImage[];
+    findSimilarImages: (id: number) => void;
+    findSimilarsRandom: () => void
+}
+
+export type SettingsContextType = {
+    similarityCriterias: SimilarityCriteria[];
     AMOUNT_RANGE: number[];
     imgAmount: number;
     setImgAmount: React.Dispatch<React.SetStateAction<number>>;
-    findSimilarImages: (id: number) => void;
-    findSimilarsRandom: () => void
     toggleCriteria: (id: number) => void;
 }
 

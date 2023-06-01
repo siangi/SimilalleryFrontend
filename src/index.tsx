@@ -9,6 +9,7 @@ import Home from './Views/Home';
 import Menu from './Views/Menu';
 
 import './css/App.css';
+import SettingsProvider from './Contexts/SettingsContext';
 
 
 const router = createBrowserRouter([
@@ -28,14 +29,15 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-
-    <ImageProvider>
-      <ActionsProvider>
-        <App>
-          <RouterProvider router={router} />
-        </App>
-      </ActionsProvider>
-    </ImageProvider>
+    <SettingsProvider>
+      <ImageProvider>
+        <ActionsProvider>
+          <App>
+            <RouterProvider router={router} />
+          </App>
+        </ActionsProvider>
+      </ImageProvider>
+    </SettingsProvider>
   </React.StrictMode>
 );
 

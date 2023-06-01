@@ -8,7 +8,7 @@
     margin-bottom: 2rem;
 }
 
-.quick-controls{
+.quick-controls {
     justify-self: right;
     display: flex;
     flex-direction: row;
@@ -16,11 +16,11 @@
     align-items: center;
 }
 
-.criteria-chip-container{
+.criteria-chip-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 50vw;
+    max-width: 60vw;
     justify-content: space-between;
     align-items: center;
 }
@@ -35,7 +35,7 @@
     gap: 1.5rem;
 }
 
-.halfgrid{
+.halfgrid {
     width: 50%;
     box-sizing: border-box;
     height: fit-content;
@@ -44,7 +44,7 @@
     border-bottom: var(--grid-border)
 }
 
-.menu-link{
+.menu-link {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -88,7 +88,7 @@ ul {
     height: 100vh;
 }
 
-.filled{
+.filled {
     background-color: var(--accent-color);
     color: var(--background-color)
 }

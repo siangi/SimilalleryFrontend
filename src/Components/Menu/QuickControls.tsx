@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
 import { Link } from "react-router-dom"
-import { FaRandom, FaQuestion} from 'react-icons/fa'
+import { FaRandom, FaQuestion } from 'react-icons/fa'
 import IconKnob from '../Controls/IconKnob'
-import PrimaryButton from '../Controls/PrimaryButton'
-import { ImageContextType, SimilarityCriteria } from '../../@types/image'
+import { ImageContextType } from '../../@types/image'
 import { ImageContext } from '../../Contexts/imageContext'
-import { string } from 'yargs'
 import CheckboxChip from '../Controls/CheckboxChip'
 
 type Props = {
@@ -22,7 +20,7 @@ export default function QuickControls(props: Props) {
                         <CheckboxChip
                             checked={imageContext.similarityCriterias[idx].active}
                             labelText={criteria.title}
-                            name={criteria.internalName}                        
+                            name={criteria.internalName}
                             onChange={() => imageContext.toggleCriteria(criteria.id)}
                             icon={criteria.icon}
                             key={idx}

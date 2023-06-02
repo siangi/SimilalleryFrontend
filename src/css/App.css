@@ -27,6 +27,10 @@ h1 {
 }
 
 .hidden {
+  display: none;
+}
+
+.see-through {
   opacity: 0;
 }
 
@@ -76,6 +80,6 @@ p {
 
 .overflow-checker {
   height: 85vh;
-  /* border: 2px solid red; */
+  border: 2px solid red;
   /* overflow: auto; */
 }

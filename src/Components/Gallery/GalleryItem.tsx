@@ -8,8 +8,9 @@ import { SettingsContext } from '../../Contexts/SettingsContext'
 
 type Props = {
   imageData: IGalleryImage;
-  onimgLoad: (id: number) => void;
+  onimgSized: (id: number) => void;
   onNextImages: (event: any) => void;
+  className: string;
 }
 
 export default function GalleryItem(props: Props) {
@@ -20,6 +21,7 @@ export default function GalleryItem(props: Props) {
 
   useEffect(() => {
     setCalculatedWidth()
+    console.log("use Effect because Sizing Rule")
   }, [settingsContext.currentSizingRuleIdx])
 
 
@@ -37,19 +39,24 @@ export default function GalleryItem(props: Props) {
     } else {
       imgRef.current.style.width = `calc(${sizingRule.base} + ${sizingRule.increase} * ${imgRef.current.naturalWidth} / 1400)`
     }
+    props.onimgSized(props.imageData.id)
   }
 
   function imageLoadHandler() {
     setCalculatedWidth()
-    props.onimgLoad(props.imageData.id)
-    gridRef.current.classList.toggle("hidden")
   }
 
 
   return (
-    <div className='gallery-item-grid hidden' ref={gridRef}>
-      <img className='gallery-item-img' alt={props.imageData.title} ref={imgRef} src={props.imageData.url} onClick={props.onNextImages} onLoad={imageLoadHandler}></img>
-      <IconKnob positioningClass="gallery-item-button" icon={<FaInfo />} onClick={(event) => { actionsContext.openLightbox(props.imageData) }}></IconKnob>
+    <div className='gallery-item-grid' ref={gridRef}>
+      <img
+        className={`gallery-item-img ${props.className}`}
+        alt={props.imageData.title} ref={imgRef} src={props.imageData.url}
+        onClick={props.onNextImages} onLoad={imageLoadHandler}></img>
+      <IconKnob
+        positioningClass="gallery-item-button"
+        icon={<FaInfo />}
+        onClick={(event) => { actionsContext.openLightbox(props.imageData) }}></IconKnob>
     </div>
   )
 }

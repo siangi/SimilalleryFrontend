@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DraggableGrid, { DraggableItem } from 'ruuri'
 import GalleryItem from './GalleryItem'
 import { ActionsContextType, ImageContextType, SettingsContextType } from '../../@types/image'
@@ -9,7 +9,6 @@ import { SettingsContext } from '../../Contexts/SettingsContext'
 
 type Props = {
   overflowChecker: () => Boolean;
-  setOnStartOverflowing: (func: () => void) => void;
 }
 
 export default function MasonryGallery(props: Props) {
@@ -19,35 +18,38 @@ export default function MasonryGallery(props: Props) {
   const actionsContext = React.useContext(ActionsContext) as ActionsContextType
 
   React.useEffect(() => {
-    props.setOnStartOverflowing(handleOverflow)
-    if (imageContext.images.length === 0) {
-      imageContext.findSimilarsRandom();
-    }
+    // props.setOnStartOverflowing(handleOverflow)
+    // if (imageContext.images.length === 0) {
+    //   imageContext.findSimilarsRandom();
+    // }
   })
 
 
-  function layoutOnLoad() {
+  function layoutGrid() {
     if (gridRef !== null) {
       gridRef.current.grid.refreshItems().layout()
     }
   }
 
   function handleOverflow() {
+    console.log("handleOverflow")
     if (settingsContext.currentSizingRuleIdx < settingsContext.SIZING_RULES.length - 1) {
+      imageContext.resetImagesSized();
       const newRule = settingsContext.currentSizingRuleIdx + 1
       settingsContext.setCurrentSizingRuleIdx(newRule)
-      console.log(`sizing rule set to ${newRule}`)
-      layoutOnLoad()
     }
   }
 
-  function imageLoadedHandler(id: number) {
-
-    imageContext.setSingleImageLoaded(id)
-    if (imageContext.images.filter((image) => image.loaded).length == imageContext.images.length) {
-      layoutOnLoad()
+  function imageSizedHandler(id: number) {
+    imageContext.setSingleImageSized(id)
+    if (imageContext.images.length > 0 && imageContext.images.filter((image) => image.loaded).length === imageContext.images.length) {
+      layoutGrid()
+      if (props.overflowChecker()) {
+        handleOverflow()
+      } else {
+        imageContext.doneLayouting()
+      }
     }
-    props.overflowChecker()
   }
 
   return (
@@ -68,7 +70,10 @@ export default function MasonryGallery(props: Props) {
               // isMain has to be included in the key, otherwise it will not recognise that an image has changed to mainImage 
               // and will not update the component with the proper style
               <DraggableItem key={image.id.toString() + image.isMain.toString()}>
-                <GalleryItem imageData={image} onimgLoad={(imageLoadedHandler)} onNextImages={(event) => imageContext.findSimilarImages(image.id)}></GalleryItem>
+                <GalleryItem className={imageContext.imagesHidden ? "see-through" : ""}
+                  imageData={image}
+                  onimgSized={(imageSizedHandler)}
+                  onNextImages={(event) => imageContext.findSimilarImages(image.id)}></GalleryItem>
               </DraggableItem>)
           })
         }

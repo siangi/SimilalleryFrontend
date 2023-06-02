@@ -12,17 +12,19 @@ export default function ActionsProvider(props: Props) {
     const [isLightboxOpen, setIsLightboxOpen] = useState<Boolean>(false)
     const [focusedImage, setFocusedImage] = useState<GalleryImage | null>(null)
 
-    function openLightbox(imageToFocus: GalleryImage){
+    function openLightbox(imageToFocus: GalleryImage) {
         setFocusedImage(imageToFocus)
         setIsLightboxOpen(true)
     }
 
-    function closeLightbox(){
+    function closeLightbox() {
         setIsLightboxOpen(false)
     }
 
+
+
     return (
-        <ActionsContext.Provider value={{ isLightboxOpen, focusedImage, openLightbox, closeLightbox}}>
+        <ActionsContext.Provider value={{ isLightboxOpen, focusedImage, openLightbox, closeLightbox }}>
             {props.children}
         </ActionsContext.Provider>
     )

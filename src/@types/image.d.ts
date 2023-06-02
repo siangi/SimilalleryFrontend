@@ -20,10 +20,12 @@ export type SimilarityCriteria = {
 
 export type ImageContextType = {
     images: GalleryImage[];
+    imagesHidden: boolean;
+    doneLayouting: () => void;
     findSimilarImages: (id: number) => void;
     findSimilarsRandom: () => void
-    resetImagesLoaded: () => void
-    setSingleImageLoaded: (id: number) => void;
+    resetImagesSized: () => void
+    setSingleImageSized: (id: number) => void;
 }
 
 export type SettingsContextType = {

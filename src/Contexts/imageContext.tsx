@@ -15,6 +15,7 @@ export const ImageContext = React.createContext<ImageContextType | null>(null);
 const ImageProvider = ({ children }: Props) => {
     const settingsContext = useContext(SettingsContext) as SettingsContextType;
     const [images, setimages] = useState<IGalleryImage[]>([]);
+    const [imagesHidden, setImagesHidden] = useState(true)
 
     useEffect(() => {
         if (images.length > 0) {
@@ -26,11 +27,13 @@ const ImageProvider = ({ children }: Props) => {
     const findSimilarImages = (id: number) => {
         const loader = new ImageLoader();
         const activeCriteriaIDs: number[] = settingsContext.getActiveSimilarityIds()
+        resetImagesSized();
+        setImagesHidden(true);
         loader.loadImagesFromLocalAPI(id, activeCriteriaIDs, settingsContext.imgAmount, setimages);
         settingsContext.calcSizingRuleIdx()
     }
 
-    const setSingleImageLoaded = (id: number) => {
+    const setSingleImageSized = (id: number) => {
         setimages(images.map((img) => {
             if (img.id === id) {
                 img.loaded = true
@@ -39,19 +42,24 @@ const ImageProvider = ({ children }: Props) => {
         }))
     }
 
-    const resetImagesLoaded = () => {
-        console.log("reset loaded")
+    const resetImagesSized = () => {
+        console.log("reset sized")
         setimages(images.map((img) => {
             img.loaded = false;
             return img
         }))
     }
 
+    const doneLayouting = () => {
+        console.log("layouting done")
+        setImagesHidden(false);
+    }
+
     const findSimilarsRandom = () => {
         findSimilarImages(-1)
     }
 
-    return <ImageContext.Provider value={{ images, findSimilarImages, findSimilarsRandom, setSingleImageLoaded, resetImagesLoaded }}>
+    return <ImageContext.Provider value={{ images, imagesHidden, doneLayouting, findSimilarImages, findSimilarsRandom, setSingleImageSized: setSingleImageSized, resetImagesSized: resetImagesSized }}>
         {children}
     </ImageContext.Provider>
 }

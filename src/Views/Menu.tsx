@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import SearchOption from '../Components/Menu/SearchOption'
 import { SettingsContext } from '../Contexts/SettingsContext'
@@ -7,23 +7,13 @@ import AmountSlider from '../Components/Menu/AmountSlider'
 import SplitGrid from '../Components/Layouts/SplitGrid'
 import SplitGridSlim from '../Components/Layouts/SplitGridSlim'
 import NavigationLink from '../Components/MenuNavigation/NavigationLink'
-import { RefObject } from 'react'
+
 
 type Props = {
 }
 
 export default function Menu(props: Props) {
     const navigate = useNavigate()
-
-    const optionsRef = useRef<HTMLHeadingElement>(null);
-    const howToRef = useRef<HTMLHeadingElement>(null);
-    const aboutRef = useRef<HTMLHeadingElement>(null);
-
-    function scrollToRef(ref: RefObject<Element>) {
-        if (ref.current !== null) {
-            ref.current.scrollIntoView({ behavior: "smooth" });
-        }
-    }
 
     const settingsContext = React.useContext(SettingsContext) as SettingsContextType
 
@@ -35,10 +25,8 @@ export default function Menu(props: Props) {
                     descriptionFilled={true}
                     imageElement={
                         <ul className='menu-nav-links'>
-                            <NavigationLink isActive={false} title="options" onClick={() => { scrollToRef(optionsRef) }}></NavigationLink>
-                            <NavigationLink isActive={false} title="how to" onClick={() => { scrollToRef(howToRef) }}></NavigationLink>
-                            <NavigationLink isActive={false} title="about" onClick={() => { scrollToRef(aboutRef) }}></NavigationLink>
-                            <NavigationLink isActive={false} title="back" onClick={() => { navigate("/") }}></NavigationLink>
+
+                            <NavigationLink isActive={false} title="close" onClick={() => { navigate("/") }}></NavigationLink>
                         </ul>
                     }
                 ></SplitGridSlim>
@@ -47,7 +35,7 @@ export default function Menu(props: Props) {
                 <p>The Similallery opens a new way to experience an art collection by grouping images based on visual similarities (which are explained below). The Image with a purple border is the base and each of the other images on the screen is similar to it in one way but different in many others. Click on the images to explore the full breadth of a gigantic art collection.</p>
             </div>
 
-            <div className='search-option-container' ref={optionsRef}>
+            <div className='search-option-container'>
                 <SplitGridSlim
                     imageElement={<AmountSlider
                         name="img-amount"
@@ -77,13 +65,13 @@ export default function Menu(props: Props) {
                         ></SplitGrid>
                     ))
                 }
-                <SplitGrid titleElement={<h3 ref={howToRef}>How to use</h3>}
+                <SplitGrid titleElement={<h3>How to use</h3>}
                     titleFilled={true}
                     imageElement={<p></p>}
                     descriptionElement={<p></p>}
                 ></SplitGrid>
                 <SplitGrid
-                    titleElement={<h3 ref={aboutRef}>About</h3>}
+                    titleElement={<h3>About</h3>}
                     titleFilled={true}
                     imageElement={<p>This Website and the backend it uses were developed by Simon Gisler for his Bachelor Thesis for Digital Ideation at the University of Applied Sciences Lucerne.
                         All the images displayed have been released online by the museums that own them and are free to use. You can find all of them in higher resolution and with more information on ArtVee.com

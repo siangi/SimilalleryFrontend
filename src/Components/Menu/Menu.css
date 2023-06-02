@@ -29,10 +29,11 @@
 .menu-nav-links {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-end;
     height: 100%;
+    width: 100%;
     margin: 0;
-    gap: 1.5rem;
+
 }
 
 
@@ -41,12 +42,10 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    width: 100%;
     text-align: center;
     list-style: none;
     text-decoration: underline;
     font-size: var(--text-m);
-    padding: 0 1rem;
     font-variation-settings: var(--heading-wght);
     transition-duration: var(--micro-anim-length);
     text-decoration-thickness: 0.1rem;

@@ -77,7 +77,7 @@ function SettingsProvider(props: Props) {
             base: "3vw",
             increase: "12vw",
             baseMainImg: "8vw",
-            increaseMainImg: "15vww",
+            increaseMainImg: "15vw",
             maxImageCount: 30,
         },
         {

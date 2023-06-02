@@ -8,9 +8,8 @@ import { SettingsContext } from '../../Contexts/SettingsContext'
 
 type Props = {
   imageData: IGalleryImage;
-  onimgSized: (id: number) => void;
+  onimgSized: () => void;
   onNextImages: (event: any) => void;
-  className: string;
 }
 
 export default function GalleryItem(props: Props) {
@@ -18,12 +17,6 @@ export default function GalleryItem(props: Props) {
   const settingsContext = useContext(SettingsContext) as SettingsContextType
   const imgRef: any = useRef(null);
   const gridRef: any = useRef(null);
-
-  useEffect(() => {
-    setCalculatedWidth()
-    console.log("use Effect because Sizing Rule")
-  }, [settingsContext.currentSizingRuleIdx])
-
 
   function setCalculatedWidth() {
     // calc the base width and increase from the amount of images
@@ -39,18 +32,19 @@ export default function GalleryItem(props: Props) {
     } else {
       imgRef.current.style.width = `calc(${sizingRule.base} + ${sizingRule.increase} * ${imgRef.current.naturalWidth} / 1400)`
     }
-    props.onimgSized(props.imageData.id)
+
+    gridRef.current.classList.toggle("see-through")
   }
 
   function imageLoadHandler() {
     setCalculatedWidth()
+    props.onimgSized();
   }
 
-
   return (
-    <div className='gallery-item-grid' ref={gridRef}>
+    <div className='gallery-item-grid see-through' ref={gridRef}>
       <img
-        className={`gallery-item-img ${props.className}`}
+        className={`gallery-item-img`}
         alt={props.imageData.title} ref={imgRef} src={props.imageData.url}
         onClick={props.onNextImages} onLoad={imageLoadHandler}></img>
       <IconKnob

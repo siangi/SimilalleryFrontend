@@ -17,9 +17,7 @@ export default function Home(props: Props) {
     return (
         <div className='main-page'>
             <QuickControls toggleMenu={(value: boolean) => console.log("menu toggled")}></QuickControls>
-            <div ref={overflowRef} className='overflow-checker'>
-                <MasonryGallery overflowChecker={checkForOverfow}></MasonryGallery>
-            </div>
+            <MasonryGallery overflowChecker={checkForOverfow}></MasonryGallery>
         </div>
     )
 }

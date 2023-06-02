@@ -77,9 +77,3 @@ p {
   font-size: var(--text-xs);
   font-variation-settings: var(--base-wght);
 }
-
-.overflow-checker {
-  height: 85vh;
-  border: 2px solid red;
-  /* overflow: auto; */
-}

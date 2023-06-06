@@ -7,7 +7,6 @@ import ImageProvider from './Contexts/imageContext';
 import App from './App';
 import Home from './Views/Home';
 import Menu from './Views/Menu';
-
 import './css/App.css';
 import SettingsProvider from './Contexts/SettingsContext';
 
@@ -41,7 +40,4 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import SearchOption from '../Components/Menu/SearchOption'
 import { SettingsContext } from '../Contexts/SettingsContext'
 import { SettingsContextType } from '../@types/image'
-import AmountSlider from '../Components/Menu/AmountSlider'
+import AmountSlider from '../Components/Controls/AmountSlider'
 import SplitGrid from '../Components/Layouts/SplitGrid'
 import SplitGridSlim from '../Components/Layouts/SplitGridSlim'
 import NavigationLink from '../Components/MenuNavigation/NavigationLink'
@@ -31,7 +31,7 @@ export default function Menu(props: Props) {
                     }
                 ></SplitGridSlim>
             </nav>
-            <div className='halfgrid'>
+            <div className='halfgrid' id="description">
                 <p>The Similallery opens a new way to experience an art collection by grouping images based on visual similarities (which are explained below). The Image with a purple border is the base and each of the other images on the screen is similar to it in one way but different in many others. Click on the images to explore the full breadth of a gigantic art collection.</p>
             </div>
 

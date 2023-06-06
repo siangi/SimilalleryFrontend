@@ -96,12 +96,14 @@ function SettingsProvider(props: Props) {
         }
     ]
 
+    // get most fitting sizing rule based on the amount of images, to prevent overflow
     function calcSizingRuleIdx() {
         let provisionalIdx = SIZING_RULES.findIndex((rule) => rule.maxImageCount >= imgAmount)
         setCurrentSizingRuleIdx(provisionalIdx >= 0 ? provisionalIdx : SIZING_RULES.length - 1)
         console.log("sizing rule index set to: " + currentSizingRuleIdx);
     }
 
+    // for the API call
     function getActiveSimilarityIds(): number[] {
         const activeCriteriaIDs: number[] = []
 

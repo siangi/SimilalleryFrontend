@@ -1,10 +1,8 @@
 import React from 'react'
 import DraggableGrid, { DraggableItem } from 'ruuri'
 import GalleryItem from './GalleryItem'
-import { ActionsContextType, ImageContextType } from '../../@types/image'
+import { ImageContextType } from '../../@types/image'
 import { ImageContext } from '../../Contexts/imageContext'
-import Lightbox from '../Lightbox/Lightbox'
-import { ActionsContext } from '../../Contexts/ActionsContext'
 
 type Props = {
   overflowChecker: () => Boolean;
@@ -13,15 +11,12 @@ type Props = {
 export default function MasonryGallery(props: Props) {
   const gridRef: any = React.useRef(null)
   const imageContext = React.useContext(ImageContext) as ImageContextType
-  const actionsContext = React.useContext(ActionsContext) as ActionsContextType
 
   React.useEffect(() => {
-    // props.setOnStartOverflowing(handleOverflow)
     if (imageContext.images.length === 0) {
       imageContext.findSimilarsRandom();
     }
   })
-
 
   function layoutGrid() {
     if (gridRef !== null) {
@@ -31,7 +26,6 @@ export default function MasonryGallery(props: Props) {
 
   return (
     <>
-      {actionsContext.isLightboxOpen ? <Lightbox></Lightbox> : null}
       <DraggableGrid
         containerClass='grid'
         dragEnabled={false}

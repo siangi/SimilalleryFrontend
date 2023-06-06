@@ -1,9 +1,8 @@
-import React, { useContext, useRef, useEffect } from 'react'
+import React, { useContext, useRef } from 'react'
 import { FaInfo } from 'react-icons/fa'
 import IconKnob from '../Controls/IconKnob'
 import { ActionsContext } from '../../Contexts/ActionsContext'
-import { ActionsContextType, IGalleryImage, ImageContextType, SettingsContextType } from '../../@types/image'
-import { ImageContext } from '../../Contexts/imageContext'
+import { ActionsContextType, IGalleryImage, SettingsContextType } from '../../@types/image'
 import { SettingsContext } from '../../Contexts/SettingsContext'
 
 type Props = {
@@ -18,9 +17,8 @@ export default function GalleryItem(props: Props) {
   const imgRef: any = useRef(null);
   const gridRef: any = useRef(null);
 
+  // calculate the width based on a size class, so each image gets about an equal mount of space
   function setCalculatedWidth() {
-    // calc the base width and increase from the amount of images
-    // the size class should probably be on the image context so it can be controlled from the outside
     let sizingRule = settingsContext.SIZING_RULES[settingsContext.currentSizingRuleIdx];
     if (imgRef.current == null) {
       return

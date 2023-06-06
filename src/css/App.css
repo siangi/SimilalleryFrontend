@@ -57,7 +57,7 @@ h1 {
 }
 
 .main-page {
-  padding: 2rem
+  padding: var(--base-padding)
 }
 
 h3 {

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 
-import { IGalleryImage, ImageContextType, SettingsContextType, SimilarityCriteria } from "../@types/image";
+import { IGalleryImage, ImageContextType, SettingsContextType } from "../@types/image";
 import ImageLoader from "../Models/ImageLoader";
 import { SettingsContext } from "./SettingsContext";
 

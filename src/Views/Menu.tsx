@@ -67,8 +67,15 @@ export default function Menu(props: Props) {
                 }
                 <SplitGrid titleElement={<h3>How to use</h3>}
                     titleFilled={true}
-                    imageElement={<p></p>}
-                    descriptionElement={<p></p>}
+                    imageElement={<img src={process.env.PUBLIC_URL + "/images/Explainers/Help.png"} alt='Visual Help showing all the buttons'></img>}
+                    descriptionElement={<ol>
+                        <li>Click on any of the images to make it the main image,and load new, similar images</li>
+                        <li>The Image with a purple border is the main image, the one all are similar to</li>
+                        <li>Click for a more detailed view of the image</li>
+                        <li>Go to the Help Page</li>
+                        <li>Get collection of similar images based on a random main image</li>
+                        <li>Toggle the similarity criteria</li>
+                    </ol>}
                 ></SplitGrid>
                 <SplitGrid
                     titleElement={<h3>About</h3>}

@@ -32,9 +32,9 @@ export default function QuickControls(props: Props) {
             </div>
             <div className='quick-controls'>
                 <Link to="menu">
-                    <IconKnob icon={<FaQuestion />} onClick={() => { }}></IconKnob>
+                    <IconKnob className='quick-control-button' icon={<FaQuestion />} onClick={() => { }}></IconKnob>
                 </Link>
-                <IconKnob icon={<FaRandom />} onClick={(event) => imageContext.findSimilarsRandom()}></IconKnob>
+                <IconKnob className='quick-control-button' icon={<FaRandom />} onClick={(event) => imageContext.findSimilarsRandom()}></IconKnob>
             </div>
         </div>
     )

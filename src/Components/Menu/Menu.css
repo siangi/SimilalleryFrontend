@@ -36,25 +36,6 @@
 }
 
 
-.menu-link {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    text-align: center;
-    list-style: none;
-    text-decoration: underline;
-    font-size: var(--text-m);
-    font-variation-settings: var(--heading-wght);
-    transition-duration: var(--micro-anim-length);
-    text-decoration-thickness: 0.1rem;
-}
-
-.menu-link:hover {
-    font-variation-settings: "wght" 700;
-    text-decoration-thickness: 0.2rem;
-}
-
 .halfgrid {
     width: 50%;
     box-sizing: border-box;

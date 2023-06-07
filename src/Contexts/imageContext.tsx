@@ -24,6 +24,7 @@ const ImageProvider = ({ children }: Props) => {
 
 
     const findSimilarImages = (id: number) => {
+        setimages([])
         const loader = new ImageLoader();
         const activeCriteriaIDs: number[] = settingsContext.getActiveSimilarityIds()
         loader.loadImagesFromLocalAPI(id, activeCriteriaIDs, settingsContext.imgAmount, setimages);

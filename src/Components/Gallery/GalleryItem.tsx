@@ -31,7 +31,7 @@ export default function GalleryItem(props: Props) {
       imgRef.current.style.width = `calc(${sizingRule.base} + ${sizingRule.increase} * ${imgRef.current.naturalWidth} / 1400)`
     }
 
-    gridRef.current.classList.toggle("see-through")
+    gridRef.current.classList.toggle("no-display", false)
   }
 
   function imageLoadHandler() {
@@ -40,13 +40,13 @@ export default function GalleryItem(props: Props) {
   }
 
   return (
-    <div className='gallery-item-grid see-through' ref={gridRef}>
+    <div className='gallery-item-grid no-display' ref={gridRef}>
       <img
         className={`gallery-item-img`}
         alt={props.imageData.title} ref={imgRef} src={props.imageData.url}
         onClick={props.onNextImages} onLoad={imageLoadHandler}></img>
       <IconKnob
-        positioningClass="gallery-item-button"
+        className="gallery-item-button"
         icon={<FaInfo />}
         onClick={(event) => { actionsContext.openLightbox(props.imageData) }}></IconKnob>
     </div>

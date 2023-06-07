@@ -6,7 +6,7 @@ import { SettingsContextType } from '../@types/image'
 import AmountSlider from '../Components/Controls/AmountSlider'
 import SplitGrid from '../Components/Layouts/SplitGrid'
 import SplitGridSlim from '../Components/Layouts/SplitGridSlim'
-import NavigationLink from '../Components/MenuNavigation/NavigationLink'
+import NavigationLink from '../Components/Controls/NavigationLink'
 
 
 type Props = {
@@ -24,10 +24,9 @@ export default function Menu(props: Props) {
                     descriptionElement={<h1>Similallery</h1>}
                     descriptionFilled={true}
                     imageElement={
-                        <ul className='menu-nav-links'>
-
-                            <NavigationLink isActive={false} title="close" onClick={() => { navigate("/") }}></NavigationLink>
-                        </ul>
+                        <div className='menu-nav-links'>
+                            <NavigationLink isActive={false} title="close" route="/"></NavigationLink>
+                        </div>
                     }
                 ></SplitGridSlim>
             </nav>

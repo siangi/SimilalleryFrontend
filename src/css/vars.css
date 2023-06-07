@@ -2,7 +2,8 @@
     --background-color: white;
     --overlay-background: rgba(248, 243, 243, 0.9);
     --accent-color: #6B0292;
-    --text-color: black;
+    --accent-color-brighter:  #9900D1;
+    --text-color: rgb(0, 0, 0);
     --base-padding: 2rem;
     --base-font: "Space Grotesk", sans-serif;
 
@@ -18,5 +19,9 @@
     --text-xxl: 4.209rem;
     --grid-border: 0.1rem solid var(--accent-color);
 
-    --micro-anim-len: 250ms;
+    --micro-anim-len: 350ms;
+    --micro-anim-long: 350ms;
+    --hover-brightness: 120%;
+    --active-brightness: 140%;
+    --active-transform: scale(0.95)
 }

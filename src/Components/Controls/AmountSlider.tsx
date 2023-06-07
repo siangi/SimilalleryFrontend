@@ -26,8 +26,6 @@ export default function AmountSlider(props: Props) {
                 defaultValue={props.startVal}
                 renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
             />
-            {/* <input type="range" className="slider" min={props.min} max={props.max} value={props.startVal} onChange={props.onChange} /> */}
-
         </>
     )
 }

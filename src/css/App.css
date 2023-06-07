@@ -26,8 +26,12 @@ h1 {
   color: var(--text-color);
 }
 
-.hidden {
+.no-display{
   display: none;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .see-through {

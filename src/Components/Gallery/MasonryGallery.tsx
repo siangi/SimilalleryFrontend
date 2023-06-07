@@ -16,11 +16,12 @@ export default function MasonryGallery(props: Props) {
     if (imageContext.images.length === 0) {
       imageContext.findSimilarsRandom();
     }
-  })
+  }, [])
 
   function layoutGrid() {
     if (gridRef !== null) {
       gridRef.current.grid.refreshItems().layout()
+      console.log("layout")
     }
   }
 

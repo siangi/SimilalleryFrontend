@@ -13,7 +13,6 @@ type Props = {
 }
 
 export default function Menu(props: Props) {
-    const navigate = useNavigate()
 
     const settingsContext = React.useContext(SettingsContext) as SettingsContextType
 
@@ -36,6 +35,7 @@ export default function Menu(props: Props) {
 
             <div className='search-option-container'>
                 <SplitGridSlim
+                    key={Math.random()}
                     imageElement={<AmountSlider
                         name="img-amount"
                         labeltext=''
@@ -50,6 +50,7 @@ export default function Menu(props: Props) {
                 {
                     settingsContext.similarityCriterias.map((criteria, index) => (
                         <SplitGrid
+                            key={Math.random()}
                             titleElement={
                                 <SearchOption
                                     checked={settingsContext.similarityCriterias[index].active}
@@ -64,7 +65,9 @@ export default function Menu(props: Props) {
                         ></SplitGrid>
                     ))
                 }
-                <SplitGrid titleElement={<h3>How to use</h3>}
+                <SplitGrid
+                    key={Math.random()}
+                    titleElement={<h3>How to use</h3>}
                     titleFilled={true}
                     imageElement={<img src={process.env.PUBLIC_URL + "/images/Explainers/Help.png"} alt='Visual Help showing all the buttons'></img>}
                     descriptionElement={<ol>
@@ -77,6 +80,7 @@ export default function Menu(props: Props) {
                     </ol>}
                 ></SplitGrid>
                 <SplitGrid
+                    key={Math.random()}
                     titleElement={<h3>About</h3>}
                     titleFilled={true}
                     imageElement={<p>This Website and the backend it uses were developed by Simon Gisler for his Bachelor Thesis for Digital Ideation at the University of Applied Sciences Lucerne.

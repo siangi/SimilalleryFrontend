@@ -38,9 +38,14 @@
     transition-duration: var(--micro-anim-long);
 }
 
-.gallery-item-grid:hover .gallery-item-img{
-    box-shadow: 5px 5px 5px 1px rgba(89,89,89,0.5);
+.gallery-item-grid:hover .gallery-item-img {
+    box-shadow: 5px 5px 5px 1px rgba(89, 89, 89, 0.5);
+    filter: brightness(105%);
+}
+
+.gallery-item-grid:active {
     filter: brightness(110%);
+    transform: var(--active-transform);
 }
 
 .gallery-ambience {

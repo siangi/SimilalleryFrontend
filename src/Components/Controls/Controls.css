@@ -34,12 +34,12 @@ button {
 }
 
 
-.icon-knob svg {
+.icon-knob {
     opacity: 1;
-    transition-duration: var(--micro-anim-len); 
+    transition-duration: var(--micro-anim-len);
 }
 
-.icon-knob:hover svg {  
+.icon-knob:hover {
     /* stroke-width: 4; */
     filter: drop-shadow(0.1rem 0.1rem 0.15rem rgba(89 89 89 / 0.5));
     filter: brightness(var(--hover-brightness))
@@ -122,11 +122,14 @@ input[type="checkbox"]:active {
 }
 
 .chip:hover {
-    box-shadow: 0.1rem 0.1rem 0.25rem 0.05rem rgba(89, 89, 89,0.5);
+    box-shadow: 0.1rem 0.1rem 0.25rem 0.05rem rgba(89, 89, 89, 0.5);
     filter: brightness(var(--hover-brightness));
 }
 
-.chip:active, .icon-knob:active, .gallery-item-grid:active, .slider-thumb:active {
+.chip:active,
+.icon-knob:active,
+.slider-thumb:active,
+.nav-link {
     filter: brightness(var(--active-brightness));
     transform: var(--active-transform);
 }
@@ -156,9 +159,9 @@ input[type="checkbox"]:active {
     color: var(--text-color);
     font-variation-settings: var(--heading-wght);
     transition-duration: var(--micro-anim-length);
-    text-decoration-thickness: 0.1rem;    
+    text-decoration-thickness: 0.1rem;
 }
 
 .nav-link:hover {
-    filter: brightness(var(--hover-brightness));    
+    filter: brightness(var(--hover-brightness));
 }

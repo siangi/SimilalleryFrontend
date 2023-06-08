@@ -21,7 +21,6 @@ export default function MasonryGallery(props: Props) {
   function layoutGrid() {
     if (gridRef !== null) {
       gridRef.current.grid.refreshItems().layout()
-      console.log("layout")
     }
   }
 

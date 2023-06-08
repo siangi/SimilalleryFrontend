@@ -9,7 +9,7 @@ type Props = {
 export const SettingsContext = React.createContext<SettingsContextType | null>(null)
 
 function SettingsProvider(props: Props) {
-    const AMOUNT_RANGE = [4, 30]
+    const AMOUNT_RANGE = [4, 24]
     const [imgAmount, setImgAmount] = useState<number>(16)
     const [similarityCriterias, setSimilarityCriterias] = useState<SimilarityCriteria[]>([
         {

@@ -35,7 +35,6 @@ export default function Menu(props: Props) {
 
             <div className='search-option-container'>
                 <SplitGridSlim
-                    key={Math.random()}
                     imageElement={<AmountSlider
                         name="img-amount"
                         labeltext=''

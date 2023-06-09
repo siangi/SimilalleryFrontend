@@ -87,12 +87,18 @@ input[type="checkbox"]:active {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    /* accent-color: var(--accent-color); */
 }
 
 .slider-thumb:hover {
-    /* background-color: var(--accent-color-brighter); */
     filter: brightness(var(--hover-brightness))
 }
+
+.slider-thumb:focus {
+    outline: none;
+    filter: brightness(var(--active-brightness));
+}
+
 
 .slider-track-1 {
     height: 0.2rem;
@@ -128,7 +134,6 @@ input[type="checkbox"]:active {
 
 .chip:active,
 .icon-knob:active,
-.slider-thumb:active,
 .nav-link {
     filter: brightness(var(--active-brightness));
     transform: var(--active-transform);
